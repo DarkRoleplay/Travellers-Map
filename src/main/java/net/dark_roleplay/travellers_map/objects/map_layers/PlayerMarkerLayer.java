@@ -19,7 +19,7 @@ public class PlayerMarkerLayer extends IMapLayer {
 	public void renderLayer(MatrixStack matrix, MapRenderInfo renderInfo, MapType mapType, boolean isRotated, float delta) {
 		matrix.push();
 		PlayerEntity player = Minecraft.getInstance().player;
-		matrix.translate(player.func_233580_cy_().getX() - renderInfo.getCenterX(), (player.func_233580_cy_().getZ() - renderInfo.getCenterZ()), 0);
+		matrix.translate(player.getPosition().getX() - renderInfo.getCenterX(), (player.getPosition().getZ() - renderInfo.getCenterZ()), 0);
 
 		float scale = 1/renderInfo.getScale();
 		matrix.scale(scale, scale, scale);

@@ -73,6 +73,10 @@ public class MinimapSettingsScreen extends Screen {
 	@Override
 	public void onClose() {
 		if(mover != null) mover.onClose();
+	}
+
+	@Override
+	public void closeScreen() {
 		this.minecraft.displayGuiScreen(parentScreen);
 	}
 }

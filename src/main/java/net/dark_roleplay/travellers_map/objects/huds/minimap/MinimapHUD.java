@@ -71,7 +71,7 @@ public class MinimapHUD extends Hud {
 		HudStyle style = this.getStyleProvider().getActiveStyle();
 		MatrixStack stack = new MatrixStack();
 
-		BlockPos playerPos = Minecraft.getInstance().player.func_233580_cy_();
+		BlockPos playerPos = Minecraft.getInstance().player.getPosition();
 		mapRenderInfo.update(style.getWidth(), style.getHeight(), zoomLevels[currentZoomLevel], playerPos);
 		MapRenderer.renderMap(matrix, mapRenderInfo, MapType.MINIMAP, true, delta);
 

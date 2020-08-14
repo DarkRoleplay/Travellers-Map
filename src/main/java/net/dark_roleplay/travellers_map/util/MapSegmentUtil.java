@@ -10,7 +10,7 @@ public class MapSegmentUtil {
 	//func_233580_cy_ == player#getPosition
 
 	public static long getSegment(PlayerEntity player, int offsetX, int offsetZ){
-		return toSegment((player.func_233580_cy_().getX() + offsetX) >> 9, (player.func_233580_cy_().getZ() + offsetZ) >> 9);
+		return toSegment((player.getPosition().getX() + offsetX) >> 9, (player.getPosition().getZ() + offsetZ) >> 9);
 	}
 
 	public static long getSegment(IChunk chunk){
@@ -24,7 +24,7 @@ public class MapSegmentUtil {
 
 
 	public static long getSegment(PlayerEntity player){
-		return toSegment(player.func_233580_cy_().getX() >> 9, player.func_233580_cy_().getZ() >> 9);
+		return toSegment(player.getPosition().getX() >> 9, player.getPosition().getZ() >> 9);
 	}
 
 	public static long getSegment(BlockPos pos){

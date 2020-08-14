@@ -72,7 +72,7 @@ public class FullMapScreen extends Screen {
         this.renderDirtBackground(0);
 
         //Map
-        BlockPos playerPos = Minecraft.getInstance().player.func_233580_cy_();
+        BlockPos playerPos = Minecraft.getInstance().player.getPosition();
         mapRenderInfo.update(this.width, this.height, 1/zoomLevels[currentZoomLevel], playerPos.add(xOffset, 0 , zOffset), mouseX, mouseY);
 
         MapRenderer.renderMap(matrix, mapRenderInfo, MapType.FULL_MAP, false, delta);
@@ -115,7 +115,7 @@ public class FullMapScreen extends Screen {
         boolean result = super.mouseClicked(mouseX, mouseY, btn);
         if(result || btn == 0) return result;
 
-        BlockPos playerPos = Minecraft.getInstance().player.func_233580_cy_().add(xOffset, 0, zOffset);
+        BlockPos playerPos = Minecraft.getInstance().player.getPosition().add(xOffset, 0, zOffset);
         double worldX = playerPos.getX() + (( mouseX - (this.width/2)) / zoomLevels[currentZoomLevel]);
         double worldZ = playerPos.getZ() + (( mouseY - (this.height/2)) / zoomLevels[currentZoomLevel]);
         xOffset = 0;

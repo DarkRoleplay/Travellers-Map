@@ -57,17 +57,18 @@ public class WaypointLayer extends IMapLayer {
 					RenderSystem.color3f(1f, 1F, 1F);
 
 					matrix.translate(-waypointX-renderInfo.getScaledWidth()/2, -waypointZ-renderInfo.getScaledHeight()/2, 0);
-					if(isHovered)
-						GuiUtils.drawHoveringText(
-								matrix,
-								new ArrayList() {{add(new StringTextComponent(waypoint.getName()));}},
-								(int) renderInfo.getScaledMouseX() + renderInfo.getScaledWidth()/2,
-								(int) renderInfo.getScaledMouseY() + renderInfo.getScaledHeight()/2,
-								(int) renderInfo.getScaledWidth(),
-								(int) renderInfo.getScaledHeight(),
-								renderInfo.getScaledWidth(),
-								Minecraft.getInstance().fontRenderer
-						);
+//					if(isHovered)
+//						//TODO Reimplement TOOLTIP
+//						GuiUtils.drawHoveringText(
+//								matrix,
+//								new ArrayList() {{add(new StringTextComponent(waypoint.getName()));}},
+//								(int) renderInfo.getScaledMouseX() + renderInfo.getScaledWidth()/2,
+//								(int) renderInfo.getScaledMouseY() + renderInfo.getScaledHeight()/2,
+//								(int) renderInfo.getScaledWidth(),
+//								(int) renderInfo.getScaledHeight(),
+//								renderInfo.getScaledWidth(),
+//								Minecraft.getInstance().fontRenderer
+//						);
 
 					matrix.pop();
 				});

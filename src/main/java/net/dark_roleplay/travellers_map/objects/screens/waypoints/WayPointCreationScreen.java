@@ -25,7 +25,7 @@ public class WayPointCreationScreen extends Screen {
 	}
 
 	@Override
-	public void onClose() {
+	public void closeScreen() {
 		this.minecraft.displayGuiScreen(parent);
 	}
 
@@ -47,7 +47,7 @@ public class WayPointCreationScreen extends Screen {
 		y.setValidator(str -> str.matches("^[0-9]*$") || str.isEmpty());
 		z.setValidator(str -> str.matches("^-?[0-9]*$") || str.isEmpty());
 
-		BlockPos playerPos = Minecraft.getInstance().player.func_233580_cy_();
+		BlockPos playerPos = Minecraft.getInstance().player.getPosition();
 
 		if (this.editedWaypoint == null) {
 			nameTextField.setText("Waypoint");
