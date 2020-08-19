@@ -12,17 +12,10 @@ public class RenderTicket implements IMapSegmentTicket {
 
 	private int unloadTicker = 3;
 
-	public static RenderTicket getOrCreateTicket(int x, int z){
-		int segX = x >> 9;
-		int segZ = z >> 9;
-		long ident = MapSegmentUtil.toSegment(segX, segZ);
-		RenderTicket ticket = TICKETS.get(ident);
-		if(ticket == null) {
-			ticket = new RenderTicket();
-			TICKETS.put(ident, ticket);
-		}else{
-			ticket.unloadTicker = 3;
-		}
+	public static RenderTicket getOrCreateTicket(long ident){
+		RenderTicket ticket = TICKETS.computeIfAbsent(ident, key -> new RenderTicket());
+		ticket.unloadTicker = 3;
+
 		return ticket;
 	}
 

@@ -25,7 +25,7 @@ public class MapRenderer {
 		matrix.translate(renderInfo.getWidth()/2F, renderInfo.getHeight()/2F, 0);
 		matrix.scale(renderInfo.getScale(), renderInfo.getScale(), renderInfo.getScale());
 		if(rotate){
-			float yaw = -(float) Math.toRadians(Minecraft.getInstance().player.getYaw(delta) - 180) /2F; //TODO Replace 0 in render code to delta
+			float yaw = -(float) Math.toRadians(Minecraft.getInstance().player.getYaw(delta) - 180) /2F;
 			matrix.rotate(new Quaternion(0, 0, (float)Math.sin(yaw), (float)Math.cos(yaw)));
 		}
 

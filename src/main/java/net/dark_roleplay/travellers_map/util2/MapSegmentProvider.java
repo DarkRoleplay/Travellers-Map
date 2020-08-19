@@ -1,5 +1,8 @@
 package net.dark_roleplay.travellers_map.util2;
 
+import net.dark_roleplay.travellers_map.mapping.Mapper;
+import net.dark_roleplay.travellers_map.objects.mappers.CaveColorMapper;
+import net.dark_roleplay.travellers_map.objects.mappers.LightingColorMapper;
 import net.dark_roleplay.travellers_map.util.MapFileHelper;
 import net.dark_roleplay.travellers_map.util.MapSegment;
 import net.dark_roleplay.travellers_map.util.MapSegmentUtil;
@@ -19,6 +22,7 @@ public class MapSegmentProvider {
 
     protected MapSegmentProvider(RegistryKey<World> dimension){
         this.dimension = dimension;
+
         this.mapSegmentFolder = new File(MapFileHelper.getDimFolder(dimension), "/default_mapper");
         if(!this.mapSegmentFolder.exists() || !this.mapSegmentFolder.isDirectory())
             this.mapSegmentFolder.mkdirs();
@@ -45,11 +49,18 @@ public class MapSegmentProvider {
     private MapSegment loadOrCreateSegment(long ident, IChunk chunk){
         int segmentX = (int) (ident >> 32 & 0xFFFFFFFF);
         int segmentZ = (int) (ident & 0xFFFFFFFF);
-        String name = "segment_" + segmentX + "_" +  segmentZ;
 
+        String name = "segment_" + segmentX + "_" +  segmentZ;
         File mapFile = new File(this.mapSegmentFolder, name + ".png");
+
+        String oldFileName = "m_" + segmentX + "_" +  segmentZ;
+        File oldMapFile = new File(this.mapSegmentFolder, oldFileName + ".png");
+        if(oldMapFile.exists()){
+            oldMapFile.renameTo(mapFile);
+        }
+
         if(mapFile.exists() || chunk != null){
-            return new MapSegment(name, mapFile, ident);
+            return new MapSegment(this, name, mapFile, ident);
         }
 
         return MapSegment.EMPTY;
@@ -59,5 +70,17 @@ public class MapSegmentProvider {
         for(MapSegment mapSegment : segments.values()){
             mapSegment.update();
         }
+    }
+
+    public void unloadSegment(MapSegment segment){
+        this.segments.remove(segment.getIdent(), segment);
+    }
+
+    public Mapper getMapper(){
+//        if(this.dimension == World.field_234919_h_){
+//            return CaveColorMapper.INSTANCE;
+//        }else{
+            return LightingColorMapper.INSTANCE;
+//        }
     }
 }

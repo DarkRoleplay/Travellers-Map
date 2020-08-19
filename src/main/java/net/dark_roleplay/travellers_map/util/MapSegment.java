@@ -1,8 +1,10 @@
 package net.dark_roleplay.travellers_map.util;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.dark_roleplay.travellers_map.objects.mappers.CaveColorMapper;
 import net.dark_roleplay.travellers_map.objects.mappers.LightingColorMapper;
 import net.dark_roleplay.travellers_map.mapping.IMapSegmentTicket;
+import net.dark_roleplay.travellers_map.util2.MapSegmentProvider;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.DynamicTexture;
 import net.minecraft.client.renderer.texture.NativeImage;
@@ -19,12 +21,14 @@ import java.util.Set;
 
 public class MapSegment {
 
-    public static MapSegment EMPTY = new MapSegment("empty", null, 0L){
+    public static MapSegment EMPTY = new MapSegment(null, "empty", null, 0L){
         @Override
         public boolean isEmpty(){
             return true;
         }
     };
+
+    private final MapSegmentProvider owner;
 
     //IO Parts
     private File mapFile;
@@ -41,7 +45,8 @@ public class MapSegment {
     boolean dirtyGPU = false;
     private String segmentName;
 
-    public MapSegment(String segmentName, File mapFile, long identifier, IMapSegmentTicket... tickets){
+    public MapSegment(MapSegmentProvider owner, String segmentName, File mapFile, long identifier, IMapSegmentTicket... tickets){
+        this.owner = owner;
         this.segmentName = segmentName;
         this.mapFile = mapFile;
         this.identifier = identifier;
@@ -71,16 +76,18 @@ public class MapSegment {
     }
 
     public void updateChunk(World world, IChunk chunk){
-        //CaveColorMapper.INSTANCE.mapChunk(world, chunk, mapImage);
-        LightingColorMapper.INSTANCE.mapChunk(world, chunk, mapImage);
+        if(this.isEmpty()) return;
+        this.owner.getMapper().mapChunk(world, chunk, mapImage);
     }
 
     public void markDirty(){
+        if(this.isEmpty()) return;
         this.dirtyIO = true;
         this.dirtyGPU = true;
     }
 
     public void updadteGPU() {
+        if(this.isEmpty()) return;
         if(this.dirtyGPU && this.dynTexture != null){
             this.dynTexture.updateDynamicTexture();
             this.dirtyGPU = false;
@@ -92,6 +99,7 @@ public class MapSegment {
     }
 
     public void update(){
+        if(this.isEmpty()) return;
         if(this.dirtyIO){
             try {
                 this.mapImage.write(this.mapFile);
@@ -111,9 +119,9 @@ public class MapSegment {
     }
 
     public void free(){
+        if(this.isEmpty()) return;
         RenderSystem.recordRenderCall(() -> Minecraft.getInstance().getTextureManager().deleteTexture(this.mapLocation));
-        //MapManager.freeMapSegment(this.identifier);
-        //TODO FIX MEMORY LEAK AND DELETE SEGMENT FROM MAP
+        this.owner.unloadSegment(this);
     }
 
     public int getSegX() {
