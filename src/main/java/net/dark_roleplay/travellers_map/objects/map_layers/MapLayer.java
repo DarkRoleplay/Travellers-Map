@@ -26,7 +26,7 @@ public class MapLayer extends IMapLayer {
 				MapSegment map = DataController.getCurrentMapSegmentProvider().getMapSegment(maps[x][z]);
 				if(map.isEmpty()) continue;
 
-				IMapSegmentTicket ticket = RenderTicket.getOrCreateTicket(map.getSegX(), map.getSegZ());
+				IMapSegmentTicket ticket = RenderTicket.getOrCreateTicket(map.getIdent());
 				map.addTicket(ticket);
 
 				map.updadteGPU();

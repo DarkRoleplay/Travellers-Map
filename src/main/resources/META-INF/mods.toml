@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[33,)"
+loaderVersion="[32,)"
 #issueTrackerURL="http://my.issue.tracker/" #optional
 license="ARR"
 
@@ -16,13 +16,13 @@ license="ARR"
 [[dependencies]]
     modId="forge"
     mandatory=true
-    versionRange="[33,)"
+    versionRange="[32,)"
     ordering="NONE"
     side="BOTH"
 
 [[dependencies]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.16.2,)"
+    versionRange="[1.16.1,)"
     ordering="NONE"
     side="BOTH"

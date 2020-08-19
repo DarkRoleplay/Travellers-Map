@@ -1,10 +1,7 @@
-v0.5.3
+v0.6
 * Bug Fix/Change, + Addition, - Removal
 
-* Many Technical Changes
-* Improved Minimap Style Selection gui
-* Improved the way water renders on the map.
-
-+ Added Waypoint Layer on Minimap & Full Screen map (will be toggleable in a future version)
-+ Added ugly temporary waypoint marker for the above mentioned layer. (It's supposed to be a pin needle)
-+ Added Round Minimap Style (needs a small rework to look better)
+* Fixed a Memory Leak, which prevented maps from being unloaded properly
+* Chaned the default name for map files to "segment_x_z" (prior m_x_Z)
+* Fixed bug causing maps to not unload if the dimension is changed
+* Fixed bug where maps from different dimensions override each other
