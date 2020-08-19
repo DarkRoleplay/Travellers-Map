@@ -1,15 +1,14 @@
-package net.dark_roleplay.travellers_map.objects.screens.minimap.settings;
+package net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settings;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.dark_roleplay.travellers_map.objects.screens.StyleChoser;
+import net.dark_roleplay.travellers_map.user_facing.huds.screens.StyleChoser;
 import net.dark_roleplay.travellers_map.util.Wrapper;
-import net.dark_roleplay.travellers_map.objects.huds.minimap.MinimapHUD;
-import net.dark_roleplay.travellers_map.objects.screens.SidePanelButton;
-import net.dark_roleplay.travellers_map.objects.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.huds.minimap.MinimapHUD;
+import net.dark_roleplay.travellers_map.user_facing.huds.screens.SidePanelButton;
+import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraftforge.client.gui.ScrollPanel;
 
 public class MinimapSettingsScreen extends Screen {
 

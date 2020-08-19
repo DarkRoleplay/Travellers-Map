@@ -2,7 +2,7 @@ package net.dark_roleplay.travellers_map.configs;
 
 import net.dark_roleplay.travellers_map.TravellersMap;
 import net.dark_roleplay.travellers_map.configs.client.HudConfig;
-import net.dark_roleplay.travellers_map.objects.huds.GuiAlignment;
+import net.dark_roleplay.travellers_map.user_facing.huds.GuiAlignment;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;

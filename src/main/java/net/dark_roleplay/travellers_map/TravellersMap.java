@@ -4,6 +4,7 @@ import net.dark_roleplay.travellers_map.util.MapManager;
 import net.dark_roleplay.travellers_map.configs.ClientConfig;
 import net.dark_roleplay.travellers_map.handler.TravellersKeybinds;
 import net.dark_roleplay.travellers_map.listeners.ResourceReloadListener;
+import net.dark_roleplay.travellers_map.util2.DataController;
 import net.dark_roleplay.travellers_map.waypointer.WaypointSpriteAtlasHelper;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
@@ -47,7 +48,7 @@ public class TravellersMap {
 		timer.scheduleAtFixedRate(new TimerTask() {
 			@Override
 			public void run() {
-				MapManager.performUpdates();
+				DataController.updateAllMaps();
 			}
 		}, 5000, 5000);
 	}

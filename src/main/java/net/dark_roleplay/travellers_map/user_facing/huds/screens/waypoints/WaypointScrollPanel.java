@@ -1,9 +1,9 @@
-package net.dark_roleplay.travellers_map.objects.screens.waypoints;
+package net.dark_roleplay.travellers_map.user_facing.huds.screens.waypoints;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.dark_roleplay.travellers_map.objects.waypoints.Waypoint;
 import net.dark_roleplay.travellers_map.util.MapManager;
-import net.dark_roleplay.travellers_map.objects.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.Screen;

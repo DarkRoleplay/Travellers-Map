@@ -1,11 +1,11 @@
 package net.dark_roleplay.travellers_map.listeners;
 
 import net.dark_roleplay.travellers_map.TravellersMap;
-import net.dark_roleplay.travellers_map.objects.huds.compass.CompassHud;
-import net.dark_roleplay.travellers_map.objects.huds.hud.HudHelper;
-import net.dark_roleplay.travellers_map.objects.huds.minimap.MinimapHUD;
+import net.dark_roleplay.travellers_map.user_facing.huds.compass.CompassHud;
+import net.dark_roleplay.travellers_map.user_facing.huds.hud.HudHelper;
+import net.dark_roleplay.travellers_map.user_facing.huds.minimap.MinimapHUD;
 import net.dark_roleplay.travellers_map.handler.TravellersKeybinds;
-import net.dark_roleplay.travellers_map.objects.screens.minimap.settings.MinimapSettingsScreen;
+import net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settings.MinimapSettingsScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;

@@ -1,7 +1,7 @@
 package net.dark_roleplay.travellers_map.handler;
 
 import net.dark_roleplay.travellers_map.TravellersMap;
-import net.dark_roleplay.travellers_map.objects.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.InputMappings;

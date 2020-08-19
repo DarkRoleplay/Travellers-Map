@@ -1,6 +1,6 @@
 package net.dark_roleplay.travellers_map.configs.client;
 
-import net.dark_roleplay.travellers_map.objects.huds.GuiAlignment;
+import net.dark_roleplay.travellers_map.user_facing.huds.GuiAlignment;
 import net.minecraftforge.common.ForgeConfigSpec;
 
 public class HudConfig {

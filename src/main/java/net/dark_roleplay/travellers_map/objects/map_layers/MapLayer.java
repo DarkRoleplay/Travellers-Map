@@ -8,6 +8,7 @@ import net.dark_roleplay.travellers_map.rendering.MapRenderInfo;
 import net.dark_roleplay.travellers_map.objects.tickets.RenderTicket;
 import net.dark_roleplay.travellers_map.util.MapManager;
 import net.dark_roleplay.travellers_map.util.MapSegment;
+import net.dark_roleplay.travellers_map.util2.DataController;
 import net.minecraft.client.gui.AbstractGui;
 
 public class MapLayer extends IMapLayer {
@@ -22,7 +23,7 @@ public class MapLayer extends IMapLayer {
 
 		for(int x = 0; x < maps.length; x++){
 			for(int z = 0; z < maps[x].length; z++){
-				MapSegment map = MapManager.getMapOrTryLoad(maps[x][z]);
+				MapSegment map = DataController.getCurrentMapSegmentProvider().getMapSegment(maps[x][z]);
 				if(map.isEmpty()) continue;
 
 				IMapSegmentTicket ticket = RenderTicket.getOrCreateTicket(map.getSegX(), map.getSegZ());

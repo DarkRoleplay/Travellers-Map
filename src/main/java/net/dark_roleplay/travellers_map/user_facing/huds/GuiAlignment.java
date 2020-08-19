@@ -1,4 +1,4 @@
-package net.dark_roleplay.travellers_map.objects.huds;
+package net.dark_roleplay.travellers_map.user_facing.huds;
 
 public enum GuiAlignment {
 	TOP_LEFT(0F, 0F), TOP(0.5F, 0F), TOP_RIGHT(1F, 0F),

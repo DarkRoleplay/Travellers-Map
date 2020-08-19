@@ -1,11 +1,11 @@
-package net.dark_roleplay.travellers_map.objects.screens.minimap.settings;
+package net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settings;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.dark_roleplay.travellers_map.util.BlendBlitHelper;
 import net.dark_roleplay.travellers_map.configs.ClientConfig;
-import net.dark_roleplay.travellers_map.objects.huds.GuiAlignment;
-import net.dark_roleplay.travellers_map.objects.huds.hud.Hud;
+import net.dark_roleplay.travellers_map.user_facing.huds.GuiAlignment;
+import net.dark_roleplay.travellers_map.user_facing.huds.hud.Hud;
 import net.dark_roleplay.travellers_map.objects.style.HudStyle;
 import net.minecraft.client.MainWindow;
 import net.minecraft.client.Minecraft;

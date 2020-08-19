@@ -4,7 +4,7 @@ import com.mojang.blaze3d.matrix.MatrixStack;
 import net.dark_roleplay.travellers_map.rendering.IMapLayer;
 import net.dark_roleplay.travellers_map.rendering.MapType;
 import net.dark_roleplay.travellers_map.rendering.MapRenderInfo;
-import net.dark_roleplay.travellers_map.objects.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.vector.Quaternion;
