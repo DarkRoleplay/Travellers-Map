@@ -112,7 +112,8 @@ public class MapSegment {
 
     public void free(){
         RenderSystem.recordRenderCall(() -> Minecraft.getInstance().getTextureManager().deleteTexture(this.mapLocation));
-        MapManager.freeMapSegment(this.identifier);
+        //MapManager.freeMapSegment(this.identifier);
+        //TODO FIX MEMORY LEAK AND DELETE SEGMENT FROM MAP
     }
 
     public int getSegX() {

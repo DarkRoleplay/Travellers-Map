@@ -1,4 +1,4 @@
-package net.dark_roleplay.travellers_map.objects.screens.waypoints;
+package net.dark_roleplay.travellers_map.user_facing.huds.screens.waypoints;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.dark_roleplay.travellers_map.objects.waypoints.Waypoint;

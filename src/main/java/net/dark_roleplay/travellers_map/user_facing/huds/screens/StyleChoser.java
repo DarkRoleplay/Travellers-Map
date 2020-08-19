@@ -1,4 +1,4 @@
-package net.dark_roleplay.travellers_map.objects.screens;
+package net.dark_roleplay.travellers_map.user_facing.huds.screens;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -8,7 +8,6 @@ import net.dark_roleplay.travellers_map.util.BlendBlitHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 

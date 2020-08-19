@@ -3,6 +3,7 @@ package net.dark_roleplay.travellers_map.mapping;
 import net.dark_roleplay.travellers_map.objects.tickets.ChunkLoadedTicket;
 import net.dark_roleplay.travellers_map.util.MapManager;
 import net.dark_roleplay.travellers_map.util.MapSegment;
+import net.dark_roleplay.travellers_map.util2.DataController;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.concurrent.ThreadTaskExecutor;
 import net.minecraft.util.math.ChunkPos;
@@ -58,7 +59,8 @@ public final class MapperQueue {
 					Chunk chunk = world.getChunk(pos.x, pos.z);
 					if(mapper.canMapChunk(world, chunk)){
 						IMapSegmentTicket ticket = ChunkLoadedTicket.loadChunk(chunk);
-						MapSegment segment = MapManager.getOrCreateMapSegment(chunk, ticket);
+						MapSegment segment = DataController.getCurrentMapSegmentProvider().getMapSegment(chunk);
+						if(!segment.isEmpty()) segment.addTicket(ticket);
 						if(segment == null || segment.isEmpty()) return;
 						segment.updateChunk(world, chunk);
 						segment.markDirty();

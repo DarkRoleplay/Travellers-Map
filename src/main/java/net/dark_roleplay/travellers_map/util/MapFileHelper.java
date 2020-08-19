@@ -1,7 +1,9 @@
 package net.dark_roleplay.travellers_map.util;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.World;
 import net.minecraft.world.storage.SaveFormat;
 
 import java.io.File;
@@ -14,8 +16,6 @@ public class MapFileHelper {
 	private static File MP_FOLDER;
 
 	private static File ACTIVE_FOLDER;
-	private static File DIM_FOLDER;
-
 	private static File WAYPOINT_FOLDER;
 
 	static{
@@ -55,13 +55,10 @@ public class MapFileHelper {
 			MapManager.WAYPOINTS.clear();
 			MapManager.loadWaypoints(WAYPOINT_FOLDER);
 		}
-
-		DIM_FOLDER = new File(ACTIVE_FOLDER, dimensionLoc.getNamespace() + "_" + dimensionLoc.getPath() + "/default_mapper");
-		DIM_FOLDER.mkdirs();
 	}
 
-	public static File getDimFolder(){
-		return DIM_FOLDER;
+	public static File getDimFolder(RegistryKey<World> dimension){
+		return new File(ACTIVE_FOLDER, dimension.func_240901_a_().getNamespace() + "_" + dimension.func_240901_a_().getPath());
 	}
 
 	public static File getWaypointFolder(){
