@@ -34,7 +34,6 @@ public class TravellersMap {
 
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(WaypointSpriteAtlasHelper::clientSetup);
-
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {

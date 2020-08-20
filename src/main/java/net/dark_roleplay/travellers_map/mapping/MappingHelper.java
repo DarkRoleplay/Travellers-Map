@@ -17,7 +17,7 @@ public class MappingHelper {
 
 	public static void initMapper(){
 		if(chunkMapper != null) return;
-		activeMappers.add(new MapperQueue(LightingColorMapper.INSTANCE));
+		activeMappers.add(new MapperQueue());
 
 		chunkMapper = new Timer("TravellersMap - Chunk Mapper", true);
 		chunkMapper.scheduleAtFixedRate(new TimerTask() {
