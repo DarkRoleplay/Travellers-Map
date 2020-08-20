@@ -19,16 +19,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class MapperQueue {
 
-	private final Mapper mapper;
-
 	private final AbstractQueue<ChunkPos> newChunksQueue = new ConcurrentLinkedQueue<>();
 	private final AbstractQueue<ChunkPos> periodicalChunksQueue = new ConcurrentLinkedQueue<>();
 
 	private TimerTask periodicTask ;
 
-	public MapperQueue(Mapper mapper){
-		this.mapper = mapper;
-	}
+	public MapperQueue(){}
 
 	public void stopMapper(){
 		newChunksQueue.clear();
@@ -52,6 +48,8 @@ public final class MapperQueue {
 			return;
 		}
 		enqueToMainThread(() -> {
+			Mapper mapper = DataController.getCurrentMapSegmentProvider().getMapper();
+
 			World world = Minecraft.getInstance().world;
 			for(int i = 0; i < mapper.getMaxChunksPerRun() && !newChunksQueue.isEmpty(); i++){
 				ChunkPos pos = newChunksQueue.remove();
