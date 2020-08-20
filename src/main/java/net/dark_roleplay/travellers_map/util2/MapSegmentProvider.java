@@ -77,10 +77,10 @@ public class MapSegmentProvider {
     }
 
     public Mapper getMapper(){
-//        if(this.dimension == World.field_234919_h_){
-//            return CaveColorMapper.INSTANCE;
-//        }else{
+        if(this.dimension == World.field_234919_h_){
+            return CaveColorMapper.INSTANCE;
+        }else{
             return LightingColorMapper.INSTANCE;
-//        }
+        }
     }
 }

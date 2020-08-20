@@ -29,8 +29,8 @@ public class CaveColorMapper extends Mapper {
 	public void mapChunk(World world, IChunk chunk, NativeImage img) {
 		ChunkPos chunkPos = chunk.getPos();
 		BlockPos.Mutable pos = new BlockPos.Mutable();
-		BlockPos.Mutable fluidPos = new BlockPos.Mutable();
-		int x = Math.floorMod(chunk.getPos().x, 32) * 16, z = Math.floorMod(chunk.getPos().z, 32) * 16;
+		BlockPos.Mutable worker = new BlockPos.Mutable();
+		int x = chunkPos.x * 16, z = chunkPos.z * 16;
 		for(int i = 0, x2 = x; i < 16; i++, x2++){
 			for(int j = 0, z2 = z; j < 16; j++, z2++){
 				BlockState firstBlock = MapperUtil.getFirstMappableBlock(world, pos.setPos(x2, height, z2), height, 0);
@@ -38,26 +38,21 @@ public class CaveColorMapper extends Mapper {
 				if(firstBlock == null) continue;
 
 				MaterialColor color = firstBlock.getMaterialColor(world, pos);
-				if(color != null){
+				if(color != null &&  (pos.getY() < height || (isVisible(chunk, pos, worker)))){
+					int brightness = 1;
+					if(world.getBlockState(pos.add(0, 1, -1)).getMaterialColor(world, pos) != MaterialColor.AIR)
+						brightness--;
+					if(world.getBlockState(pos.add(0, 0, -1)).getMaterialColor(world, pos) == MaterialColor.AIR)
+						brightness++;
 
-					int brightness;
-					if(!firstBlock.getFluidState().isEmpty() && firstBlock.getFluidState().getFluid() == Fluids.WATER){
-						brightness = 2;
-						boolean isPrimary = (i + j) % 2 == 1;
-
-						int depth = MapperUtil.getFluidDepth(world, fluidPos.setPos(pos));
-						if(depth >= 10 || (depth >= 7 && isPrimary))
-							brightness = 0;
-						else if(depth >= 5 || depth >= 3 && isPrimary)
-							brightness = 1;
-					}else{
-						brightness = 1;
-						if(world.getBlockState(pos.add(0, 1, -1)).getMaterialColor(world, pos) != MaterialColor.AIR)
-							brightness--;
-						if(world.getBlockState(pos.add(0, 0, -1)).getMaterialColor(world, pos) == MaterialColor.AIR)
-							brightness++;
-					}
-					img.setPixelRGBA(Math.floorMod(x2, 512), Math.floorMod(z2, 512), (palette.getRGBA(color.colorIndex, brightness)));
+					float light = (0.04F * world.getLight(pos.add(0, 1, 0))) + 0.4F;
+					int argb = palette.getRGBA(color.colorIndex, brightness);
+					int red = (int) ((argb >> 16 & 0xFF) * light);
+					int green = (int) ((argb >> 8 & 0xFF) * light);
+					int blue = (int) ((argb & 0xFF) * light);
+					img.setPixelRGBA(Math.floorMod(x2, 512), Math.floorMod(z2, 512), argb & 0xFF000000 | red << 16 | green << 8 | blue);
+				}else{
+					img.setPixelRGBA(Math.floorMod(x2, 512), Math.floorMod(z2, 512), 0xFF000000);
 				}
 			}
 		}
