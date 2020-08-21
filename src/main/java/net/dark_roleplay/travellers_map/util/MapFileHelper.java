@@ -1,5 +1,6 @@
 package net.dark_roleplay.travellers_map.util;
 
+import net.dark_roleplay.travellers_map.util2.DataController;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.RegistryKey;
 import net.minecraft.util.ResourceLocation;
@@ -28,12 +29,12 @@ public class MapFileHelper {
 	}
 
 	public static void setupBaseMapFolder(ResourceLocation dimensionLoc){
-		boolean refreshWaypoints = false;
+		boolean changedWorld = false;
 		if(Minecraft.getInstance().isIntegratedServerRunning()){
 			SaveFormat.LevelSave saveFile = Minecraft.getInstance().getIntegratedServer().anvilConverterForAnvilFile;
 			File tmpFolder = new File(SP_FOLDER, saveFile.func_237282_a_());
 			if(!tmpFolder.equals(ACTIVE_FOLDER)){
-				refreshWaypoints = true;
+				changedWorld = true;
 				ACTIVE_FOLDER = tmpFolder;
 			}
 		}else{
@@ -42,7 +43,7 @@ public class MapFileHelper {
 				InetSocketAddress inet = (InetSocketAddress) socket;
 				File tmpFolder = new File(MP_FOLDER, inet.getHostName() + "_" +  inet.getPort());
 				if(!tmpFolder.equals(ACTIVE_FOLDER)){
-					refreshWaypoints = true;
+					changedWorld = true;
 					ACTIVE_FOLDER = tmpFolder;
 				}
 			}
@@ -51,7 +52,8 @@ public class MapFileHelper {
 		WAYPOINT_FOLDER = new File(ACTIVE_FOLDER, "waypoints");
 		WAYPOINT_FOLDER.mkdirs();
 
-		if(refreshWaypoints){
+		if(changedWorld){
+			DataController.clear();
 			MapManager.WAYPOINTS.clear();
 			MapManager.loadWaypoints(WAYPOINT_FOLDER);
 		}
