@@ -28,6 +28,10 @@ public class DataController {
         }
     }
 
+    public static void clear(){
+        MAP_SEGMENT_PROVIDERS.clear();
+    }
+
 //    public static void unloadMapSegment(MapSegment segment){
 //        segment.
 //    }
