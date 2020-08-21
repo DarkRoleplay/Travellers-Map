@@ -1,6 +1,11 @@
 v0.6.1
 * Bug Fix/Change, + Addition, - Removal
 
+v0.6.2
++ Added keybind to toggle Minimap
+* Fixed maps not getting unloaded properly when leaving a world (It is recommended to way ~5 seconds after leaving a world so all the maps are properly saved)
+
+v0.6.1
 * Implemented Cave Mapper
 + Nether now uses Cave Mapper with a default height of 96, in the future it'll chose your height
 
