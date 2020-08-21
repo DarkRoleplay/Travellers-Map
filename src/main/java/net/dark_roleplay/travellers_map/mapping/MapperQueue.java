@@ -45,6 +45,7 @@ public final class MapperQueue {
 	public void processLoadedChunksQueue(){
 		if(Minecraft.getInstance().world == null){
 			MappingHelper.killMapper();
+			DataController.clear();
 			return;
 		}
 		enqueToMainThread(() -> {
