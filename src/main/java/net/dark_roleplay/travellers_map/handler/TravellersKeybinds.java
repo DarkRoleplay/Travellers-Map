@@ -1,6 +1,7 @@
 package net.dark_roleplay.travellers_map.handler;
 
 import net.dark_roleplay.travellers_map.TravellersMap;
+import net.dark_roleplay.travellers_map.configs.ClientConfig;
 import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
@@ -21,11 +22,15 @@ public class TravellersKeybinds {
     public static KeyBinding ZOOM_IN = new KeyBinding("key.travellers_map.zoom.in", KeyConflictContext.IN_GAME, InputMappings.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
     public static KeyBinding ZOOM_OUT = new KeyBinding("key.travellers_map.zoom.out", KeyConflictContext.IN_GAME, InputMappings.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
     public static KeyBinding OPEN_MAP = new KeyBinding("key.travellers_map.map.open", GLFW.GLFW_KEY_M, "key.categories.travellers_map");
+    public static KeyBinding TOGGLE_MINIMAP = new KeyBinding("key.travellers_map.minimap.toggle", GLFW.GLFW_KEY_KP_DECIMAL, "key.categories.travellers_map");
 
     @SubscribeEvent
     public static void keyListeners(InputEvent.KeyInputEvent event){
         if(OPEN_MAP.isPressed()){
             Minecraft.getInstance().displayGuiScreen(new FullMapScreen());
+        }
+        if(TOGGLE_MINIMAP.isPressed()){
+            ClientConfig.MINIMAP.VISIBLE.set(!ClientConfig.MINIMAP.VISIBLE.get());
         }
     }
 
