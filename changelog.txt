@@ -3,6 +3,7 @@ v0.6.1
 
 v0.6.2
 + Added keybind to toggle Minimap
++ Added keybind to toggle Compass
 * Fixed maps not getting unloaded properly when leaving a world (It is recommended to way ~5 seconds after leaving a world so all the maps are properly saved)
 
 v0.6.1

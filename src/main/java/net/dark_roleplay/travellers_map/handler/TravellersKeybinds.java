@@ -23,6 +23,7 @@ public class TravellersKeybinds {
     public static KeyBinding ZOOM_OUT = new KeyBinding("key.travellers_map.zoom.out", KeyConflictContext.IN_GAME, InputMappings.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
     public static KeyBinding OPEN_MAP = new KeyBinding("key.travellers_map.map.open", GLFW.GLFW_KEY_M, "key.categories.travellers_map");
     public static KeyBinding TOGGLE_MINIMAP = new KeyBinding("key.travellers_map.minimap.toggle", GLFW.GLFW_KEY_KP_DECIMAL, "key.categories.travellers_map");
+    public static KeyBinding TOGGLE_COMPASS = new KeyBinding("key.travellers_map.compass.toggle", GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
 
     @SubscribeEvent
     public static void keyListeners(InputEvent.KeyInputEvent event){
@@ -31,6 +32,9 @@ public class TravellersKeybinds {
         }
         if(TOGGLE_MINIMAP.isPressed()){
             ClientConfig.MINIMAP.VISIBLE.set(!ClientConfig.MINIMAP.VISIBLE.get());
+        }
+        if(TOGGLE_COMPASS.isPressed()){
+            ClientConfig.COMPASS.VISIBLE.set(!ClientConfig.MINIMAP.VISIBLE.get());
         }
     }
 
