@@ -1,0 +1,17 @@
+{
+	"key.categories.travellers_map": "Travellers Map",
+
+	"key.travellers_map.map.open": "Öffne Karte",
+	"key.travellers_map.zoom": "Minimap Zoom (Mausrad drehen während gedrückt)",
+	"key.travellers_map.zoom.in": "Minimap herein zoomen",
+	"key.travellers_map.zoom.out": "Minimap heraus zoomen",
+	"key.travellers_map.minimap.toggle": "Minimap an-/ausschalten",
+	"key.travellers_map.compass.toggle": "Kompass an-/ausschalten",
+
+	"screen.travellers_map.minimap_settings": "Minimap Einstellungen",
+	"screen.travellers_map.full_map": "Vollbild Karte",
+	"screen.travellers_map.waypoint_creation": "Wegpunkt Einstellungen",
+
+	"hud.travellers_map.minimap": "Minimap",
+	"hud.travellers_map.minimap.mover": "Minimap Verschieber"
+}

@@ -2,16 +2,16 @@
 	"key.categories.travellers_map": "Travellers Map",
 
 	"key.travellers_map.map.open": "Open Map",
-	"key.travellers_map.zoom": "Minimap Zoom (press and use mouse wheel)",
-	"key.travellers_map.zoom.in": "Minimap Zoom In",
-	"key.travellers_map.zoom.out": "Minimap Zoom Out",
-	"key.travellers_map.minimap.toggle": "Toggle Minimap Visibility",
-	"key.travellers_map.compass.toggle": "Toggle Compass Visibility",
+	"key.travellers_map.zoom": "Minimap zoom (press and use mouse wheel)",
+	"key.travellers_map.zoom.in": "Minimap zoom in",
+	"key.travellers_map.zoom.out": "Minimap zoom out",
+	"key.travellers_map.minimap.toggle": "Toggle minimap visibility",
+	"key.travellers_map.compass.toggle": "Toggle compass visibility",
 
-	"screen.travellers_map.minimap_settings": "Minimap Settings",
-	"screen.travellers_map.full_map": "Fullscreen Map",
-	"screen.travellers_map.waypoint_creation": "Waypoint Settings",
+	"screen.travellers_map.minimap_settings": "Minimap settings",
+	"screen.travellers_map.full_map": "Fullscreen map",
+	"screen.travellers_map.waypoint_creation": "Waypoint settings",
 
 	"hud.travellers_map.minimap": "Minimap",
-	"hud.travellers_map.minimap.mover": "Minimap Mover"
+	"hud.travellers_map.minimap.mover": "Minimap mover"
 }
