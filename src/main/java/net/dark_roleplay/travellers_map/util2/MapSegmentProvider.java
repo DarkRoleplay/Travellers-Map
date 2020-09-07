@@ -13,11 +13,12 @@ import net.minecraft.world.chunk.IChunk;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class MapSegmentProvider {
 
     private final RegistryKey<World> dimension;
-    private final Map<Long, MapSegment> segments = new HashMap<>();
+    private final Map<Long, MapSegment> segments = new ConcurrentHashMap<>();
     private final File mapSegmentFolder;
 
     protected MapSegmentProvider(RegistryKey<World> dimension){
