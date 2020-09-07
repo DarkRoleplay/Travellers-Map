@@ -22,7 +22,7 @@ public class WaypointScrollPanel extends ScrollPanel {
 
 	@Override
 	protected int getContentHeight() {
-		return MapManager.WAYPOINTS.size() * elementHeight;
+		return Math.max(this.height - 4, MapManager.WAYPOINTS.size() * elementHeight);
 	}
 
 	@Override
@@ -55,9 +55,8 @@ public class WaypointScrollPanel extends ScrollPanel {
 	protected boolean clickPanel(double mouseX, double mouseY, int button) {
 		int offset = 0;
 		for(Waypoint waypoint : MapManager.WAYPOINTS) {
-			int elemTop = (int) (offset) - 1;
-			if (elemTop + elementHeight < 0 ||
-					elemTop > this.height) {
+			int elemTop = (int)(offset);
+			if(elemTop + elementHeight < this.top || elemTop > this.top + this.height){
 				offset += elementHeight;
 				continue;
 			}

@@ -1,5 +1,9 @@
-v0.6.3
+v0.6.4
 * Bug Fix/Change, + Addition, - Removal
+
+v0.6.4
+* Fixed Waypoints in Waypoint List not being editable/removeable
+* Fixed Waypoints in Waypoint List getting centered if there were to little to scroll
 
 v0.6.3
 * Fixed a minor bug that caused the map writer to crash, slowing down map generation massively and also no longer saving explored maps
