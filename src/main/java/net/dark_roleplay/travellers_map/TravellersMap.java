@@ -5,7 +5,10 @@ import net.dark_roleplay.travellers_map.configs.ClientConfig;
 import net.dark_roleplay.travellers_map.handler.TravellersKeybinds;
 import net.dark_roleplay.travellers_map.listeners.ResourceReloadListener;
 import net.dark_roleplay.travellers_map.util2.DataController;
+import net.dark_roleplay.travellers_map.waypointer.WaypointIcons;
 import net.dark_roleplay.travellers_map.waypointer.WaypointSpriteAtlasHelper;
+import net.dark_roleplay.travellers_map2.listeners.ClientChatListener;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -27,16 +30,20 @@ public class TravellersMap {
 //    public static Thread MAPPING_THREAD;
 
 	public TravellersMap() {
+		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TravellersMapClient::modConstructorInit);
+
 		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfig.CLIENT_SPECS);
 		//Config.loadConfig(ClientConfig.CLIENT_SPECS, FMLPaths.CONFIGDIR.get().resolve("mytutorial-client.toml"));
 
 		DistExecutor.runWhenOn(Dist.CLIENT, () -> ResourceReloadListener::run);
 
 		FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
-		FMLJavaModLoadingContext.get().getModEventBus().addListener(WaypointSpriteAtlasHelper::clientSetup);
+//		FMLJavaModLoadingContext.get().getModEventBus().addListener(WaypointSpriteAtlasHelper::clientSetup);
 	}
 
 	public void clientSetup(FMLClientSetupEvent event) {
+		WaypointIcons.getWaypointIcon(new ResourceLocation(MODID, "test"));
+
 
 		DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
 			TravellersKeybinds.registerKeybinds(event);

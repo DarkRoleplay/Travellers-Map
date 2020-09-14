@@ -1,0 +1,5 @@
+{
+	"name": "travellers_map:nether_portal",
+	"compassIcon": "travellers_map:textures/guis/waypoint_markers/nether_portal",
+	"compassIconTinted": "travellers_map:textures/guis/waypoint_markers/nether_portal_tint"
+}

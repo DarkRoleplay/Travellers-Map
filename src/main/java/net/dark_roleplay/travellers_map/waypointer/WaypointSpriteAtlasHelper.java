@@ -22,42 +22,42 @@ import java.util.concurrent.Executor;
 import java.util.stream.StreamSupport;
 
 public class WaypointSpriteAtlasHelper {
-	private static final JsonParser PARSER = new JsonParser();
+//	private static final JsonParser PARSER = new JsonParser();
+//
+//	public  static final AtlasTexture WAYPOINT_SPRITE_ATLAS = new AtlasTexture(new ResourceLocation("textures/atlas/waypoint_sprites.png"));
+//
+//	private static final Set<WaypointIcon> MARKERS = new HashSet<>();
+//
+//	public static void clientSetup(FMLClientSetupEvent event) {
+//		if (Minecraft.getInstance() == null) return; //Nop out, running DataGen
+//
+//		if (Minecraft.getInstance().getResourceManager() instanceof IReloadableResourceManager) {
+//			((IReloadableResourceManager) Minecraft.getInstance().getResourceManager()).addReloadListener(WaypointSpriteAtlasHelper::reload);
+//		}
+//	}
 
-	public  static final AtlasTexture WAYPOINT_SPRITE_ATLAS = new AtlasTexture(new ResourceLocation("textures/atlas/waypoint_sprites.png"));
-
-	private static final Set<WaypointMarker> MARKERS = new HashSet<>();
-
-	public static void clientSetup(FMLClientSetupEvent event) {
-		if (Minecraft.getInstance() == null) return; //Nop out, running DataGen
-
-		if (Minecraft.getInstance().getResourceManager() instanceof IReloadableResourceManager) {
-			((IReloadableResourceManager) Minecraft.getInstance().getResourceManager()).addReloadListener(WaypointSpriteAtlasHelper::reload);
-		}
-	}
-
-	public static CompletableFuture<Void> reload(IFutureReloadListener.IStage stage, IResourceManager resourceManager, IProfiler preparationsProfiler, IProfiler reloadProfiler, Executor backgroundExecutor, Executor gameExecutor) {
-		return CompletableFuture.<Void>supplyAsync(() -> {
-			MARKERS.clear();
-
-			try {
-				Set<ResourceLocation> textures = new HashSet<>();
-				resourceManager.getAllResources(new ResourceLocation(TravellersMap.MODID, "travellers_map/waypoint_markers.json")).stream()
-						.map(resource -> new JsonReader(new InputStreamReader(resource.getInputStream())))
-						.map(reader -> (JsonObject) PARSER.parse(reader))
-						.map(json -> JSONUtils.getJsonArray(json, "markerTypes", new JsonArray()))
-						.flatMap(jsonArray -> StreamSupport.stream(jsonArray.spliterator(), false))
-						.map(json -> new WaypointMarker((JsonObject) json))
-						.forEach(marker -> {
-							marker.gatherTextures(textures);
-							MARKERS.add(marker);
-						});
-
-				WAYPOINT_SPRITE_ATLAS.stitch(resourceManager, textures.stream(), reloadProfiler, 0);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			return null;
-		}).thenCompose(stage::markCompleteAwaitingOthers);
-	}
+//	public static CompletableFuture<Void> reload(IFutureReloadListener.IStage stage, IResourceManager resourceManager, IProfiler preparationsProfiler, IProfiler reloadProfiler, Executor backgroundExecutor, Executor gameExecutor) {
+//		return CompletableFuture.<Void>supplyAsync(() -> {
+//			MARKERS.clear();
+//
+//			try {
+//				Set<ResourceLocation> textures = new HashSet<>();
+//				resourceManager.getAllResources(new ResourceLocation(TravellersMap.MODID, "travellers_map/waypoint_markers.json")).stream()
+//						.map(resource -> new JsonReader(new InputStreamReader(resource.getInputStream())))
+//						.map(reader -> (JsonObject) PARSER.parse(reader))
+//						.map(json -> JSONUtils.getJsonArray(json, "markerTypes", new JsonArray()))
+//						.flatMap(jsonArray -> StreamSupport.stream(jsonArray.spliterator(), false))
+//						.map(json -> new WaypointIcon((JsonObject) json))
+//						.forEach(marker -> {
+//							marker.gatherTextures(textures);
+//							MARKERS.add(marker);
+//						});
+//
+//				WAYPOINT_SPRITE_ATLAS.stitch(resourceManager, textures.stream(), reloadProfiler, 0);
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//			return null;
+//		}).thenCompose(stage::markCompleteAwaitingOthers);
+//	}
 }

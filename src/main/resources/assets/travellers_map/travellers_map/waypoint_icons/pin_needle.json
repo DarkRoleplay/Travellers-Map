@@ -1,0 +1,5 @@
+{
+	"name": "travellers_map:pin_needle",
+	"compassIcon": "travellers_map:textures/guis/waypoint_markers/pin_needle",
+	"compassIconTinted": "travellers_map:textures/guis/waypoint_markers/pin_needle_tint"
+}
