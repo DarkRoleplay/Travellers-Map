@@ -1,4 +1,4 @@
-package net.dark_roleplay.travellers_map.waypointer;
+package net.dark_roleplay.travellers_map.waypointer.icons;
 
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;

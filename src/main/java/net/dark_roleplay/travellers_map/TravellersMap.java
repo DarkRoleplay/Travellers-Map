@@ -1,13 +1,10 @@
 package net.dark_roleplay.travellers_map;
 
-import net.dark_roleplay.travellers_map.util.MapManager;
 import net.dark_roleplay.travellers_map.configs.ClientConfig;
 import net.dark_roleplay.travellers_map.handler.TravellersKeybinds;
 import net.dark_roleplay.travellers_map.listeners.ResourceReloadListener;
 import net.dark_roleplay.travellers_map.util2.DataController;
-import net.dark_roleplay.travellers_map.waypointer.WaypointIcons;
-import net.dark_roleplay.travellers_map.waypointer.WaypointSpriteAtlasHelper;
-import net.dark_roleplay.travellers_map2.listeners.ClientChatListener;
+import net.dark_roleplay.travellers_map.waypointer.icons.WaypointIcons;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;

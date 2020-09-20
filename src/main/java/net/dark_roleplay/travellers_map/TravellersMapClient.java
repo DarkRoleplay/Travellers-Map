@@ -1,6 +1,6 @@
 package net.dark_roleplay.travellers_map;
 
-import net.dark_roleplay.travellers_map.waypointer.WaypointIcons;
+import net.dark_roleplay.travellers_map.waypointer.icons.WaypointIcons;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.IReloadableResourceManager;
 import net.minecraft.resources.IResourceManager;

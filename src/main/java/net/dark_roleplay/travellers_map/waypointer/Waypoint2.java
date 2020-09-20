@@ -1,77 +1,53 @@
 package net.dark_roleplay.travellers_map.waypointer;
 
-import com.mojang.serialization.Codec;
-import net.dark_roleplay.travellers_map.util.MapManager;
-import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.nbt.NBTUtil;
+import net.dark_roleplay.travellers_map.waypointer.icons.WaypointIcon;
 import net.minecraft.util.RegistryKey;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.DimensionType;
-import net.minecraftforge.common.util.INBTSerializable;
 
-import java.util.UUID;
+import java.util.Map;
 
 public class Waypoint2{
 
-	private ResourceLocation waypointIcon;
-	private UUID uuid;
 	private String name;
-	private BlockPos pos;
-	private boolean hasY;
+	private int color;
+	private WaypointIcon icon;
+	private Map<RegistryKey, WaypointPosition> positions;
 
-	private boolean isDirty;
-
-
-
-	public Waypoint2(UUID uuid){
-		this.uuid = uuid;
-	}
-
-	public Waypoint2(UUID uuid, String name, BlockPos pos) {
-		this(uuid);
+	public Waypoint2(String name, int color, WaypointIcon icon, Map positions) {
 		this.name = name;
-		this.pos = pos;
-	}
-
-	public BlockPos getPos() {
-		return pos;
+		this.color = color;
+		this.icon = icon;
+		this.positions = positions;
 	}
 
 	public String getName() {
 		return name;
 	}
 
-	/** ----- Helper Methods for Stream Based Rendering ----- **/
-
-	public static int widestNameWidth = 0;
-	private float lastRenderedYaw;
-	private float lastRenderedOffset;
-	private int nameWidth;
-
-	public Waypoint2 setLastRenderedData(float lastRenderedYaw, float lastRenderedOffset) {
-		this.lastRenderedYaw = lastRenderedYaw;
-		this.lastRenderedOffset = lastRenderedOffset;
-		return this;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public Waypoint2 initNameWidth(FontRenderer renderer){
-		this.nameWidth = renderer.getStringWidth(this.name);
-		if(this.nameWidth > widestNameWidth)
-			widestNameWidth = this.nameWidth;
-		return this;
+	public int getColor() {
+		return color;
 	}
 
-	public float getLastRenderedYaw() {
-		return lastRenderedYaw;
+	public void setColor(int color) {
+		this.color = color;
 	}
 
-	public float getLastRenderedOffset() {
-		return lastRenderedOffset;
+	public WaypointIcon getIcon() {
+		return icon;
 	}
 
-	public int getNameWidth() {
-		return nameWidth;
+	public void setIcon(WaypointIcon icon) {
+		this.icon = icon;
+	}
+
+	public Map<RegistryKey, WaypointPosition> getPositions() {
+		return positions;
+	}
+
+	public void setPositions(Map<RegistryKey, WaypointPosition> positions) {
+		this.positions = positions;
 	}
 }

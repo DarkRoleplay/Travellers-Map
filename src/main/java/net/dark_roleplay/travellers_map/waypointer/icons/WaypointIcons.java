@@ -1,7 +1,5 @@
-package net.dark_roleplay.travellers_map.waypointer;
+package net.dark_roleplay.travellers_map.waypointer.icons;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.mojang.serialization.JsonOps;
@@ -10,8 +8,6 @@ import net.minecraft.resources.IFutureReloadListener;
 import net.minecraft.resources.IResource;
 import net.minecraft.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
 
 import java.io.IOException;
 import java.io.InputStreamReader;
