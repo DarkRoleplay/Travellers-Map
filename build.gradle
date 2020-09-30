@@ -132,11 +132,18 @@ processResources {
         exclude 'META-INF/mods.toml'
     }
 
-
-    // Minify json resources
     doLast {
-        fileTree(dir: outputs.files.asPath, include: "**/*.json").each {
-            File file -> file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
+        // Minify json resources
+        fileTree(dir: outputs.files.asPath, include: "**/*.json").each{
+            File file -> file.text = JsonOutput.toJson(new JsonSlurper().parse(file));
+        }
+
+        // Minify pngs resources
+
+        fileTree(dir: outputs.files.asPath, include: "**/*.png").each {
+            File file ->
+                def proc = ('pingo -quiet -strip -auto ' + file).execute();
+                proc.waitFor();
         }
     }
 }
