@@ -1,0 +1,17 @@
+{
+	"key.categories.travellers_map": "Карта на Пътешественика",
+
+	"key.travellers_map.map.open": "Отвори Картата",
+	"key.travellers_map.zoom": "Мини-карта зуум (натисни и използвай колело на мишката)",
+	"key.travellers_map.zoom.in": "Мини-карта увеличи",
+	"key.travellers_map.zoom.out": "Мини-карта отдалечи",
+	"key.travellers_map.minimap.toggle": "Превключи видимостта на мини-картата",
+	"key.travellers_map.compass.toggle": "Превключи видимостта на компаса",
+
+	"screen.travellers_map.minimap_settings": "настройки на мини-картата",
+	"screen.travellers_map.full_map": "Цялоекранна карта",
+	"screen.travellers_map.waypoint_creation": "Настройки на точки",
+
+	"hud.travellers_map.minimap": "Мини-карта",
+	"hud.travellers_map.minimap.mover": "Премествач на мини-картата"
+}
