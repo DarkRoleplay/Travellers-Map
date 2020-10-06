@@ -78,7 +78,7 @@ public class MapSegmentProvider {
     }
 
     public Mapper getMapper(){
-        if(this.dimension == World.field_234919_h_){
+        if(this.dimension == World.THE_NETHER){
             return CaveColorMapper.INSTANCE;
         }else{
             return LightingColorMapper.INSTANCE;

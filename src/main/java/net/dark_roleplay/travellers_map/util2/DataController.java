@@ -19,7 +19,7 @@ public class DataController {
     }
 
     private static RegistryKey<World> getPlayerWorldKey(){
-        return Minecraft.getInstance().world.func_234923_W_();
+        return Minecraft.getInstance().world.getDimensionKey();
     }
 
     public static void updateAllMaps(){

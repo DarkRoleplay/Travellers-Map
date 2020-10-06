@@ -32,7 +32,7 @@ public class MapFileHelper {
 		boolean changedWorld = false;
 		if(Minecraft.getInstance().isIntegratedServerRunning()){
 			SaveFormat.LevelSave saveFile = Minecraft.getInstance().getIntegratedServer().anvilConverterForAnvilFile;
-			File tmpFolder = new File(SP_FOLDER, saveFile.func_237282_a_());
+			File tmpFolder = new File(SP_FOLDER, saveFile.getSaveName());
 			if(!tmpFolder.equals(ACTIVE_FOLDER)){
 				changedWorld = true;
 				ACTIVE_FOLDER = tmpFolder;
@@ -60,7 +60,7 @@ public class MapFileHelper {
 	}
 
 	public static File getDimFolder(RegistryKey<World> dimension){
-		return new File(ACTIVE_FOLDER, dimension.func_240901_a_().getNamespace() + "_" + dimension.func_240901_a_().getPath());
+		return new File(ACTIVE_FOLDER, dimension.getRegistryName().getNamespace() + "_" + dimension.getRegistryName().getPath());
 	}
 
 	public static File getWaypointFolder(){

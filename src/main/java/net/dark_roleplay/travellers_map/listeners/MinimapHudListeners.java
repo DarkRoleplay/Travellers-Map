@@ -5,6 +5,7 @@ import net.dark_roleplay.travellers_map.user_facing.huds.compass.CompassHud;
 import net.dark_roleplay.travellers_map.user_facing.huds.hud.HudHelper;
 import net.dark_roleplay.travellers_map.user_facing.huds.minimap.MinimapHUD;
 import net.dark_roleplay.travellers_map.handler.TravellersKeybinds;
+import net.dark_roleplay.travellers_map.user_facing.huds.overlay_map.OverlayMapHud;
 import net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settings.MinimapSettingsScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -20,12 +21,17 @@ public class MinimapHudListeners {
 			new HudHelper(
 					MinimapHUD.INSTANCE,
 					MinimapHudListeners::hideWhenDebug,
-					v -> !(Minecraft.getInstance().currentScreen instanceof MinimapSettingsScreen)
+					v -> !(Minecraft.getInstance().currentScreen instanceof MinimapSettingsScreen),
+					v -> !TravellersKeybinds.SHOW_OVERLAY.isKeyDown()
 			),
 			new HudHelper(
 					CompassHud.INSTANCE,
 					MinimapHudListeners::hideWhenDebug,
 					v -> !Minecraft.getInstance().ingameGUI.getTabList().visible
+			),
+			new HudHelper(
+					OverlayMapHud.INSTANCE,
+					v -> TravellersKeybinds.SHOW_OVERLAY.isKeyDown()
 			)
 	};
 

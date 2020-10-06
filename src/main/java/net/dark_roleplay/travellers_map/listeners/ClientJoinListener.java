@@ -19,8 +19,8 @@ public class ClientJoinListener {
 	public static void joinWorldListener(EntityJoinWorldEvent event){
 		if(!event.getWorld().isRemote()) return;
 		if(event.getEntity() instanceof PlayerEntity){
-			RegistryKey<World> key = event.getWorld().func_234923_W_();
-			MapFileHelper.setupBaseMapFolder(key.func_240901_a_());
+			RegistryKey<World> key = event.getWorld().getDimensionKey();
+			MapFileHelper.setupBaseMapFolder(key.getRegistryName());
 
 			MappingHelper.initMapper();
 		}

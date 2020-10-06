@@ -22,8 +22,8 @@ public class HudHelper {
         if(!shouldRender()) return;
 
         RenderSystem.pushMatrix();
-        int posX = config.ALIGNMENT.get().getX(width) + config.POS_X.get();
-        int posY = config.ALIGNMENT.get().getY(height) + config.POS_Y.get();
+        int posX = config == null ? 0 : config.ALIGNMENT.get().getX(width) + config.POS_X.get();
+        int posY = config == null ? 0 : config.ALIGNMENT.get().getY(height) + config.POS_Y.get();
         RenderSystem.translatef(posX, posY, 0);
         hud.setWindowSize(width, height);
         hud.render(matrix, 0, 0, partialTicks);
@@ -32,7 +32,7 @@ public class HudHelper {
     }
 
     private boolean shouldRender(){
-        if(!config.VISIBLE.get()) return false;
+        if(config != null && !config.VISIBLE.get()) return false;
 
         for(Predicate<Void> predicate : predicates)
             if(!predicate.test(null)) return false;

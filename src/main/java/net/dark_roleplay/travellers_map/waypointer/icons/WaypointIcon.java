@@ -9,11 +9,11 @@ import java.util.Optional;
 public class WaypointIcon {
 	public static final Codec<WaypointIcon> CODEC = RecordCodecBuilder.<WaypointIcon>create(
 			instance -> instance.group(
-					ResourceLocation.RESOURCE_LOCATION_CODEC.fieldOf("name").forGetter(icon -> icon.getRegistryName()),
-					ResourceLocation.RESOURCE_LOCATION_CODEC.optionalFieldOf("compassIcon").forGetter(icon -> icon.getCompassIcon() == null ? Optional.empty() : Optional.of(icon.getCompassIcon())),
-					ResourceLocation.RESOURCE_LOCATION_CODEC.optionalFieldOf("compassIconTinted").forGetter(icon -> icon.getCompassIconTinted() == null ? Optional.empty() : Optional.of(icon.getCompassIconTinted())),
-					ResourceLocation.RESOURCE_LOCATION_CODEC.optionalFieldOf("mapIcon").forGetter(icon -> icon.getMapIcon() == null ? Optional.empty() : Optional.of(icon.getMapIcon())),
-					ResourceLocation.RESOURCE_LOCATION_CODEC.optionalFieldOf("mapIconTinted").forGetter(icon -> icon.getMapIconTinted() == null ? Optional.empty() : Optional.of(icon.getMapIconTinted()))
+					ResourceLocation.CODEC.fieldOf("name").forGetter(icon -> icon.getRegistryName()),
+					ResourceLocation.CODEC.optionalFieldOf("compassIcon").forGetter(icon -> icon.getCompassIcon() == null ? Optional.empty() : Optional.of(icon.getCompassIcon())),
+					ResourceLocation.CODEC.optionalFieldOf("compassIconTinted").forGetter(icon -> icon.getCompassIconTinted() == null ? Optional.empty() : Optional.of(icon.getCompassIconTinted())),
+					ResourceLocation.CODEC.optionalFieldOf("mapIcon").forGetter(icon -> icon.getMapIcon() == null ? Optional.empty() : Optional.of(icon.getMapIcon())),
+					ResourceLocation.CODEC.optionalFieldOf("mapIconTinted").forGetter(icon -> icon.getMapIconTinted() == null ? Optional.empty() : Optional.of(icon.getMapIconTinted()))
 			).apply(instance, WaypointIcon::new)
 	);
 
