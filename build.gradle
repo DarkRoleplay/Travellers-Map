@@ -37,11 +37,6 @@ sourceSets {
     }
 }
 
-repositories {
-    maven { url 'https://www.dogforce-games.com/maven/' }
-}
-
-
 minecraft {
     mappings channel: 'snapshot', version: '20200913-160551-1.16.2'
     //mappings channel: 'snapshot', version: "${mapping}-${mcp_version}"
