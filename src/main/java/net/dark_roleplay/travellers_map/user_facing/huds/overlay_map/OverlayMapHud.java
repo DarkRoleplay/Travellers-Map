@@ -28,6 +28,7 @@ public class OverlayMapHud extends Hud {
         matrix.push();
         matrix.translate(wWidth/2 - 100, wHeight/2 - 100, 0);
 
+        //Setup depth Test Mask
         RenderSystem.enableDepthTest();
         RenderSystem.translatef(0.0F, 0.0F, 950.0F);
         RenderSystem.colorMask(false, false, false, false);
@@ -38,12 +39,20 @@ public class OverlayMapHud extends Hud {
         RenderSystem.depthFunc(515);
         RenderSystem.colorMask(true, true, true, true);
 
+        //Render Map
         RenderSystem.enableBlend();
         RenderSystem.color4f(1F, 1F, 1F, 0.5F);
-
         MapRenderer.renderMap(matrix, mapRenderInfo, MapType.MINIMAP, false, delta);
-
         RenderSystem.color4f(1F, 1F, 1F, 1F);
+
+        //Reset depth test mask
+        RenderSystem.depthFunc(518);
+        RenderSystem.translatef(0.0F, 0.0F, -950.0F);
+        RenderSystem.colorMask(false, false, false, false);
+        fill(matrix, 4680, 2260, -4680, -2260, -16777216);
+        RenderSystem.colorMask(true, true, true, true);
+        RenderSystem.depthFunc(515);
+
         matrix.pop();
     }
 }
