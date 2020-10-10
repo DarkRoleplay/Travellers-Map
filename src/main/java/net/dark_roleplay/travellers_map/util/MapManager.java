@@ -11,6 +11,7 @@ import net.minecraft.world.chunk.IChunk;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -51,7 +52,12 @@ public class MapManager {
 
     public static void deleteWaypoint(Waypoint waypoint){
         File waypointFile = new File(MapFileHelper.getWaypointFolder(), waypoint.uuid.toString() + ".waypoint");
-        waypointFile.delete();
+        try {
+			Files.delete(waypointFile.toPath());
+		} catch (IOException e) {
+			TravellersMap.LOG.error("Failed to delete waypoint {}.", waypointFile.getName(), e);
+			e.printStackTrace();
+		}
         WAYPOINTS.remove(waypoint);
     }
 }
