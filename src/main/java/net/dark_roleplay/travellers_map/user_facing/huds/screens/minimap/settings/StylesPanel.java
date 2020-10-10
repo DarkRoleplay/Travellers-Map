@@ -3,6 +3,7 @@ package net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settin
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.dark_roleplay.travellers_map.util.BlendBlitHelper;
 import net.dark_roleplay.travellers_map.user_facing.huds.hud.Hud;
+import net.dark_roleplay.travellers_map.TravellersMap;
 import net.dark_roleplay.travellers_map.objects.style.HudStyle;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.SimpleSound;
@@ -58,7 +59,7 @@ public class StylesPanel extends ScrollPanel {
 			if(mouseX >= this.left && mouseX <= this.right  - 6 && mouseY >= elemTop - 2 && mouseY <= elemTop + style.getHeight() + 2){
 				this.hud.getStyleProvider().setActiveStyle(style);
 				Minecraft.getInstance().getSoundHandler().play(SimpleSound.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
-				System.out.println(style.getStyleName());
+				TravellersMap.LOG.info("Style set to {}.", style.getStyleName());
 				return true;
 			}
 		}

@@ -1,5 +1,6 @@
 package net.dark_roleplay.travellers_map.util;
 
+import net.dark_roleplay.travellers_map.TravellersMap;
 import net.dark_roleplay.travellers_map.mapping.IMapSegmentTicket;
 import net.dark_roleplay.travellers_map.objects.waypoints.Waypoint;
 import net.minecraft.client.Minecraft;
@@ -37,7 +38,7 @@ public class MapManager {
             if(file.isDirectory()) loadWaypoints(file);
             else{
                 try{
-                    System.out.println(file.getName());
+                	TravellersMap.LOG.info("Reading waypoints from {}.", file.getName());
                     Waypoint wp = new Waypoint(UUID.fromString(file.getName().substring(0, file.getName().lastIndexOf('.'))));
                     wp.deserializeNBT(CompressedStreamTools.read(file));
                     WAYPOINTS.add(wp);
