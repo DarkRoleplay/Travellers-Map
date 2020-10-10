@@ -171,7 +171,7 @@ publishing {
 //Custom
 
 curseforge {
-    apiKey = System.getenv('CURSE_API_KEY') // This should really be in a gradle.properties file
+    apiKey = System.getenv('CURSE_API_KEY') ?: 0// This should really be in a gradle.properties file
     project {
         id = '360748'
         changelog = file('changelog.txt') // A file can also be set using: changelog = file('changelog.txt')
