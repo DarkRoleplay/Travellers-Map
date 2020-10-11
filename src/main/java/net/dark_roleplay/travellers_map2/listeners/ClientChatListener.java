@@ -30,7 +30,7 @@ public class ClientChatListener {
 		if(event.getMessage().startsWith("/")){
 			try{
 				ParseResults<CommandSource> parse = commands.parse(event.getMessage().substring(1), Minecraft.getInstance().player.getCommandSource());
-				if(parse.getContext().getNodes().size() > 0){
+				if(!parse.getContext().getNodes().isEmpty()){
 					event.setCanceled(true);
 					commands.execute(parse);
 				}

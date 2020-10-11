@@ -1,5 +1,6 @@
 package net.dark_roleplay.travellers_map.util;
 
+import net.dark_roleplay.travellers_map.TravellersMap;
 import net.dark_roleplay.travellers_map.mapping.IMapSegmentTicket;
 import net.dark_roleplay.travellers_map.objects.waypoints.Waypoint;
 import net.minecraft.client.Minecraft;
@@ -10,6 +11,7 @@ import net.minecraft.world.chunk.IChunk;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -37,7 +39,7 @@ public class MapManager {
             if(file.isDirectory()) loadWaypoints(file);
             else{
                 try{
-                    System.out.println(file.getName());
+                	TravellersMap.LOG.info("Reading waypoints from {}.", file.getName());
                     Waypoint wp = new Waypoint(UUID.fromString(file.getName().substring(0, file.getName().lastIndexOf('.'))));
                     wp.deserializeNBT(CompressedStreamTools.read(file));
                     WAYPOINTS.add(wp);
@@ -50,7 +52,12 @@ public class MapManager {
 
     public static void deleteWaypoint(Waypoint waypoint){
         File waypointFile = new File(MapFileHelper.getWaypointFolder(), waypoint.uuid.toString() + ".waypoint");
-        waypointFile.delete();
+        try {
+			Files.delete(waypointFile.toPath());
+		} catch (IOException e) {
+			TravellersMap.LOG.error("Failed to delete waypoint {}.", waypointFile.getName(), e);
+			e.printStackTrace();
+		}
         WAYPOINTS.remove(waypoint);
     }
 }

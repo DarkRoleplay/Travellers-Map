@@ -3,6 +3,8 @@ package net.dark_roleplay.travellers_map.waypointer.icons;
 import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
 import com.mojang.serialization.JsonOps;
+
+import net.dark_roleplay.travellers_map.TravellersMap;
 import net.minecraft.profiler.IProfiler;
 import net.minecraft.resources.IFutureReloadListener;
 import net.minecraft.resources.IResource;
@@ -49,7 +51,7 @@ public class WaypointIcons {
 										.thenApplyAsync(resource -> new JsonReader(new InputStreamReader(resource.getInputStream())))
 										.thenApplyAsync(reader -> PARSER.parse(reader))
 										.thenApplyAsync(jsonElement -> WaypointIcon.CODEC.decode(JsonOps.INSTANCE, jsonElement))
-										.thenApplyAsync(dataPair -> dataPair.getOrThrow(false, System.out::println).getFirst())
+										.thenApplyAsync(dataPair -> dataPair.getOrThrow(false, TravellersMap.LOG::error).getFirst())
 										.thenAccept(icon -> ICONS.put(icon.getRegistryName(), icon))
 						)
 						.<CompletableFuture<WaypointIcon>>toArray(count -> new CompletableFuture[count]);
