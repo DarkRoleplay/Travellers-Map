@@ -1,10 +1,12 @@
 package net.dark_roleplay.travellers_map.listeners;
 
 import net.dark_roleplay.travellers_map.TravellersMap;
+import net.dark_roleplay.travellers_map.user_facing.huds.ChargedKeybindProgress;
 import net.dark_roleplay.travellers_map.user_facing.huds.compass.CompassHud;
 import net.dark_roleplay.travellers_map.user_facing.huds.hud.HudHelper;
 import net.dark_roleplay.travellers_map.user_facing.huds.minimap.MinimapHUD;
 import net.dark_roleplay.travellers_map.handler.TravellersKeybinds;
+import net.dark_roleplay.travellers_map.user_facing.huds.overlay_map.OverlayMapHud;
 import net.dark_roleplay.travellers_map.user_facing.screens.minimap.settings.MinimapSettingsScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.api.distmarker.Dist;
@@ -42,6 +44,10 @@ public class MinimapHudListeners {
 		int width = event.getWindow().getScaledWidth();
 		int height = event.getWindow().getScaledHeight();
 		float partialTicks = event.getPartialTicks();
+
+		ChargedKeybindProgress progressHud = new ChargedKeybindProgress();
+		progressHud.setWindowSize(width, height);
+		progressHud.render(event.getMatrixStack(), 0, 0, partialTicks);
 
 		for(HudHelper helper : HUDS)
 			helper.render(event.getMatrixStack(), width, height, partialTicks);

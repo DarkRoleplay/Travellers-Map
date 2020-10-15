@@ -4,6 +4,7 @@ import net.dark_roleplay.library.ChargedKeybinding;
 import net.dark_roleplay.travellers_map.TravellersMap;
 import net.dark_roleplay.travellers_map.configs.ClientConfig;
 import net.dark_roleplay.travellers_map.user_facing.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.minimap.settings.MinimapSettingsScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.InputMappings;
@@ -32,13 +33,11 @@ public class TravellersKeybinds {
     @SubscribeEvent
     public static void keyListeners(InputEvent.KeyInputEvent event){
         if(OPEN_MAP2.isChargedPress()){
-            System.out.println("Charged Press");
+            Minecraft.getInstance().displayGuiScreen(new MinimapSettingsScreen(null));
         }else if(OPEN_MAP2.cancelledChargedPress()){
-            System.out.println("Cancelled");
-        }
-        if(OPEN_MAP.isPressed()){
             Minecraft.getInstance().displayGuiScreen(new FullMapScreen());
         }
+
         if(TOGGLE_MINIMAP.isPressed()){
             ClientConfig.MINIMAP.VISIBLE.set(!ClientConfig.MINIMAP.VISIBLE.get());
         }
