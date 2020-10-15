@@ -3,7 +3,10 @@ package net.dark_roleplay.travellers_map.waypointer.icons;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.text.TextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 
+import java.awt.*;
 import java.util.Optional;
 
 public class WaypointIcon {

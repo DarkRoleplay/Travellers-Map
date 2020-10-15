@@ -1,4 +1,4 @@
-package net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settings;
+package net.dark_roleplay.travellers_map.user_facing.screens.minimap.settings;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.dark_roleplay.travellers_map.util.BlendBlitHelper;

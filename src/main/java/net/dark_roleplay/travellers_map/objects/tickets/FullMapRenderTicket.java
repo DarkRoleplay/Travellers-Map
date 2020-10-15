@@ -2,9 +2,9 @@ package net.dark_roleplay.travellers_map.objects.tickets;
 
 import net.dark_roleplay.travellers_map.mapping.IMapSegmentTicket;
 import net.dark_roleplay.travellers_map.util.MapSegmentUtil;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settings.MinimapSettingsScreen;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.waypoints.WayPointCreationScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.minimap.settings.MinimapSettingsScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.waypoints.WayPointCreationScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 

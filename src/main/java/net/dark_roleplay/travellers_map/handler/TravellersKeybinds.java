@@ -1,8 +1,9 @@
 package net.dark_roleplay.travellers_map.handler;
 
+import net.dark_roleplay.library.ChargedKeybinding;
 import net.dark_roleplay.travellers_map.TravellersMap;
 import net.dark_roleplay.travellers_map.configs.ClientConfig;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.full_map.FullMapScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.client.util.InputMappings;
@@ -26,8 +27,15 @@ public class TravellersKeybinds {
     public static KeyBinding TOGGLE_MINIMAP = new KeyBinding("key.travellers_map.minimap.toggle", GLFW.GLFW_KEY_KP_DECIMAL, "key.categories.travellers_map");
     public static KeyBinding TOGGLE_COMPASS = new KeyBinding("key.travellers_map.compass.toggle", GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
 
+    public static ChargedKeybinding OPEN_MAP2 = new ChargedKeybinding("key.travellers_map.map.open", GLFW.GLFW_KEY_N, "key.categories.travellers_map");
+
     @SubscribeEvent
     public static void keyListeners(InputEvent.KeyInputEvent event){
+        if(OPEN_MAP2.isChargedPress()){
+            System.out.println("Charged Press");
+        }else if(OPEN_MAP2.cancelledChargedPress()){
+            System.out.println("Cancelled");
+        }
         if(OPEN_MAP.isPressed()){
             Minecraft.getInstance().displayGuiScreen(new FullMapScreen());
         }

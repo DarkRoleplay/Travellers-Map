@@ -1,4 +1,4 @@
-package net.dark_roleplay.travellers_map.user_facing.huds.screens;
+package net.dark_roleplay.travellers_map.user_facing.screens;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.systems.RenderSystem;

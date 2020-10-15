@@ -1,10 +1,10 @@
-package net.dark_roleplay.travellers_map.user_facing.huds.screens;
+package net.dark_roleplay.travellers_map.user_facing.screens;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.dark_roleplay.travellers_map.util.Wrapper;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.full_map.FullMapScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.util.text.TranslationTextComponent;

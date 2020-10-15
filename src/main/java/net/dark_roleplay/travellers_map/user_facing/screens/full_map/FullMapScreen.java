@@ -1,14 +1,14 @@
-package net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map;
+package net.dark_roleplay.travellers_map.user_facing.screens.full_map;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.dark_roleplay.travellers_map.TravellersMap;
 import net.dark_roleplay.travellers_map.rendering.MapType;
 import net.dark_roleplay.travellers_map.rendering.MapRenderInfo;
 import net.dark_roleplay.travellers_map.util.Wrapper;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.SidePanelButton;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settings.MinimapSettingsScreen;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.waypoints.WayPointCreationScreen;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.waypoints.WaypointScrollPanel;
+import net.dark_roleplay.travellers_map.user_facing.screens.SidePanelButton;
+import net.dark_roleplay.travellers_map.user_facing.screens.minimap.settings.MinimapSettingsScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.waypoints.WayPointCreationScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.waypoints.WaypointScrollPanel;
 import net.dark_roleplay.travellers_map.rendering.MapRenderer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;

@@ -1,11 +1,11 @@
-package net.dark_roleplay.travellers_map.user_facing.huds.screens.minimap.settings;
+package net.dark_roleplay.travellers_map.user_facing.screens.minimap.settings;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.StyleChoser;
+import net.dark_roleplay.travellers_map.user_facing.screens.StyleChoser;
 import net.dark_roleplay.travellers_map.util.Wrapper;
 import net.dark_roleplay.travellers_map.user_facing.huds.minimap.MinimapHUD;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.SidePanelButton;
-import net.dark_roleplay.travellers_map.user_facing.huds.screens.full_map.FullMapScreen;
+import net.dark_roleplay.travellers_map.user_facing.screens.SidePanelButton;
+import net.dark_roleplay.travellers_map.user_facing.screens.full_map.FullMapScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.util.text.TranslationTextComponent;
