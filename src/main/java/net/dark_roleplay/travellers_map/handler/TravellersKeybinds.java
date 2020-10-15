@@ -20,24 +20,18 @@ import org.lwjgl.glfw.GLFW;
 @Mod.EventBusSubscriber(modid = TravellersMap.MODID, value = Dist.CLIENT)
 public class TravellersKeybinds {
 
-    public static KeyBinding ZOOM = new KeyBinding("key.travellers_map.zoom", KeyConflictContext.IN_GAME, InputMappings.Type.KEYSYM, GLFW.GLFW_KEY_KP_0, "key.categories.travellers_map");
+    public static KeyBinding ZOOM = new KeyBinding("key.travellers_map.zoom", KeyConflictContext.IN_GAME, InputMappings.Type.KEYSYM, GLFW.GLFW_MOUSE_BUTTON_MIDDLE, "key.categories.travellers_map");
     public static KeyBinding ZOOM_IN = new KeyBinding("key.travellers_map.zoom.in", KeyConflictContext.IN_GAME, InputMappings.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
     public static KeyBinding ZOOM_OUT = new KeyBinding("key.travellers_map.zoom.out", KeyConflictContext.IN_GAME, InputMappings.Type.KEYSYM, GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
-    public static KeyBinding OPEN_MAP = new KeyBinding("key.travellers_map.map.open", GLFW.GLFW_KEY_M, "key.categories.travellers_map");
     public static KeyBinding SHOW_OVERLAY = new KeyBinding("key.travellers_map.overlay_map.show", GLFW.GLFW_KEY_TAB, "key.categories.travellers_map");
     public static KeyBinding TOGGLE_MINIMAP = new KeyBinding("key.travellers_map.minimap.toggle", GLFW.GLFW_KEY_KP_DECIMAL, "key.categories.travellers_map");
     public static KeyBinding TOGGLE_COMPASS = new KeyBinding("key.travellers_map.compass.toggle", GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
 
-    public static ChargedKeybinding OPEN_MAP2 = new ChargedKeybinding("key.travellers_map.map.open", GLFW.GLFW_KEY_N, "key.categories.travellers_map");
+    public static ChargedKeybinding OPEN_MAP = new ChargedKeybinding("key.travellers_map.map.open", GLFW.GLFW_KEY_M, "key.categories.travellers_map",
+          () -> Minecraft.getInstance().displayGuiScreen(new MinimapSettingsScreen(null)), () -> Minecraft.getInstance().displayGuiScreen(new FullMapScreen()));
 
     @SubscribeEvent
     public static void keyListeners(InputEvent.KeyInputEvent event){
-        if(OPEN_MAP2.isChargedPress()){
-            Minecraft.getInstance().displayGuiScreen(new MinimapSettingsScreen(null));
-        }else if(OPEN_MAP2.cancelledChargedPress()){
-            Minecraft.getInstance().displayGuiScreen(new FullMapScreen());
-        }
-
         if(TOGGLE_MINIMAP.isPressed()){
             ClientConfig.MINIMAP.VISIBLE.set(!ClientConfig.MINIMAP.VISIBLE.get());
         }
