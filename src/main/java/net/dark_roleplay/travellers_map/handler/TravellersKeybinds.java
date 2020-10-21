@@ -27,7 +27,7 @@ public class TravellersKeybinds {
     public static KeyBinding TOGGLE_MINIMAP = new KeyBinding("key.travellers_map.minimap.toggle", GLFW.GLFW_KEY_KP_DECIMAL, "key.categories.travellers_map");
     public static KeyBinding TOGGLE_COMPASS = new KeyBinding("key.travellers_map.compass.toggle", GLFW.GLFW_KEY_UNKNOWN, "key.categories.travellers_map");
 
-    public static ChargedKeybinding OPEN_MAP = new ChargedKeybinding("key.travellers_map.map.open", GLFW.GLFW_KEY_M, "key.categories.travellers_map",
+    public static ChargedKeybinding OPEN_MAP = new ChargedKeybinding("key.travellers_map.map.open", GLFW.GLFW_KEY_M, "key.categories.travellers_map", 750,
           () -> Minecraft.getInstance().displayGuiScreen(new MinimapSettingsScreen(null)), () -> Minecraft.getInstance().displayGuiScreen(new FullMapScreen()));
 
     @SubscribeEvent
@@ -41,9 +41,14 @@ public class TravellersKeybinds {
     }
 
     public static void registerKeybinds(FMLClientSetupEvent event){
-        ClientRegistry.registerKeyBinding(OPEN_MAP);
         ClientRegistry.registerKeyBinding(ZOOM);
         ClientRegistry.registerKeyBinding(ZOOM_IN);
         ClientRegistry.registerKeyBinding(ZOOM_OUT);
+
+        ClientRegistry.registerKeyBinding(SHOW_OVERLAY);
+        ClientRegistry.registerKeyBinding(TOGGLE_MINIMAP);
+        ClientRegistry.registerKeyBinding(TOGGLE_COMPASS);
+
+        ClientRegistry.registerKeyBinding(OPEN_MAP);
     }
 }

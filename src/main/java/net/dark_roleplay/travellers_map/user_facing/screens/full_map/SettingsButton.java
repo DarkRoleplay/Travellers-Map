@@ -22,7 +22,7 @@ public class SettingsButton extends Button {
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-		this.blit(matrix, this.x, this.y, 230, i, this.width, this.height);
+		this.blit(matrix, this.x, this.y, 0, i, this.width, this.height);
 		this.renderBg(matrix, minecraft, p_renderButton_1_, p_renderButton_2_);
 	}
 }

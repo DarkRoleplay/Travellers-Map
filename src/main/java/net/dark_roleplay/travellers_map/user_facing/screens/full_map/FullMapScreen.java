@@ -2,20 +2,22 @@ package net.dark_roleplay.travellers_map.user_facing.screens.full_map;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.dark_roleplay.travellers_map.TravellersMap;
-import net.dark_roleplay.travellers_map.rendering.MapType;
 import net.dark_roleplay.travellers_map.rendering.MapRenderInfo;
-import net.dark_roleplay.travellers_map.util.Wrapper;
-import net.dark_roleplay.travellers_map.user_facing.screens.SidePanelButton;
-import net.dark_roleplay.travellers_map.user_facing.screens.minimap.settings.MinimapSettingsScreen;
-import net.dark_roleplay.travellers_map.user_facing.screens.waypoints.WayPointCreationScreen;
-import net.dark_roleplay.travellers_map.user_facing.screens.waypoints.WaypointScrollPanel;
 import net.dark_roleplay.travellers_map.rendering.MapRenderer;
+import net.dark_roleplay.travellers_map.rendering.MapType;
+import net.dark_roleplay.travellers_map.user_facing.screens.minimap.settings.MinimapSettingsScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.widget.button.Button;
+import net.minecraft.client.gui.widget.Widget;
+import net.minecraft.client.gui.widget.button.ImageButton;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.fml.client.gui.GuiUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FullMapScreen extends Screen {
     public static ResourceLocation FULL_MAP_TEXTURES = new ResourceLocation(TravellersMap.MODID, "textures/guis/full_map.png");
@@ -23,14 +25,26 @@ public class FullMapScreen extends Screen {
     private float xOffset = 0;
     private float zOffset = 0;
     private int currentZoomLevel = 1;
-
     private MapRenderInfo mapRenderInfo = new MapRenderInfo();
-
-    private Wrapper<Boolean> isWaypointListOpen = new Wrapper(false);
-
-    private WaypointScrollPanel scrollPanel;
-
     private float[] zoomLevels = new float[]{2.0F, 1.0F, 0.5F, 0.25F};
+
+    private List<ITextComponent> tooltipText = new ArrayList();
+
+    /** ++ Animation Stuff **/
+
+    final int movementResetCooldown = 40;
+    int mouseMovedCooldown = 0;
+
+    int prevMouseX = 0;
+    int prevMouseY = 0;
+
+    final int targetOffset = 20;
+    int offset = 0;
+
+    private Widget[] bottomButtons;
+    private Widget[] rightButtons;
+
+    /** -- Animation Stuff **/
 
     public FullMapScreen(){
         super(new TranslationTextComponent("screen.travellers_map.full_map"));
@@ -38,32 +52,34 @@ public class FullMapScreen extends Screen {
 
     @Override
     protected void init() {
-        scrollPanel = new WaypointScrollPanel(this.minecraft, this, 118, this.height - 35, 5, 5);
-        Button waypointButton = new Button(5, this.height - 25, 118, 20, new TranslationTextComponent("New Waypoint"), button -> {
-            this.minecraft.displayGuiScreen(new WayPointCreationScreen(this, null));
-        });
+        bottomButtons = new Widget[2];
+        rightButtons = new Widget[1];
 
-        this.addButton(new SettingsButton(this.width - 13, 1, btn -> {
-            Minecraft.getInstance().displayGuiScreen(new MinimapSettingsScreen(this));
-        }));
+        //Options
+        this.addButton(rightButtons[0] = new ImageButton(
+              this.width - 13, 1, 12, 12, 112, 96, 16, FULL_MAP_TEXTURES, 128, 128,
+              btn -> {
+                  Minecraft.getInstance().displayGuiScreen(new MinimapSettingsScreen(this));
+              },
+              new TranslationTextComponent("screen.button.travellers_map.settings")
+        ));
 
-        this.addButton(new SidePanelButton(isWaypointListOpen.get() ? 125 : -2, (this.height - 23) / 2, isWaypointListOpen, btn -> {
-            if(isWaypointListOpen.get()){
-                this.children.add(scrollPanel);
-                this.addButton(waypointButton);
-                btn.x = 125;
-            }else{
-                this.buttons.remove(scrollPanel);
-                btn.x = -2;
-                this.buttons.remove(waypointButton);
-                this.buttons.remove(waypointButton);
-            }
-        }));
+        //Center On Player
+        this.addButton(bottomButtons[0] = new ImageButton(
+              this.width - 15, this.height - 15, 14, 14, 0, 96, 16, FULL_MAP_TEXTURES, 128, 128,
+              btn -> {
+                  xOffset = 0;
+                  zOffset = 0;
+              },
+              new TranslationTextComponent("screen.button.travellers_map.center_map")
+        ));
 
-        if(isWaypointListOpen.get()){
-            this.children.add(scrollPanel);
-            this.addButton(waypointButton);
-        }
+        //Waypoint Adding
+        this.addButton(bottomButtons[1] = new ImageButton(
+              this.width - 27, this.height - 16, 11, 15, 96, 96, 16, FULL_MAP_TEXTURES, 128, 128,
+              btn -> {},
+              new TranslationTextComponent("screen.button.travellers_map.add_waypoint")
+        ));
     }
 
     @Override
@@ -77,14 +93,60 @@ public class FullMapScreen extends Screen {
         MapRenderer.renderMap(matrix, mapRenderInfo, MapType.FULL_MAP, false, delta);
 
         Minecraft.getInstance().getTextureManager().bindTexture(FULL_MAP_TEXTURES);
-        if(isWaypointListOpen.get()){
-            blit(matrix, 0, 0, 128, this.height, 0, 0, 128, 256, 256, 256);
-            scrollPanel.render(matrix, mouseX, mouseY, delta);
+
+        this.blit(matrix, 1, this.height - 14, 0, 0, 100, 12, 128, 128);
+        int blocks = (int) (zoomLevels[currentZoomLevel] * 100);
+        String measurement = String.format("%d Blocks", blocks);
+
+        font.drawStringWithShadow(matrix, measurement, 51 - (font.getStringWidth(measurement)/2), this.height - 12, 0xFFFFFFFF);
+
+
+        /** ++ Animation Stuff **/
+
+        if(prevMouseX != mouseX && prevMouseY != mouseY){
+            prevMouseX = mouseX;
+            prevMouseY = mouseY;
+            mouseMovedCooldown = movementResetCooldown;
         }
 
+        fill(matrix, this.width - 15 + offset, 0, this.width, 15, 0xC0000000);
+        fill(matrix, this.width - 28, this.height - 17 + offset, this.width, this.height, 0xC0000000);
+        /** -- Animation Stuff **/
+
         super.render(matrix, mouseX, mouseY, delta);
+
+        if(offset <= 0)
+        for(Widget w : this.buttons){
+            if(!w.isHovered()) continue;
+            tooltipText.clear();
+            tooltipText.add(w.getMessage());
+            GuiUtils.drawHoveringText(matrix, tooltipText, w.x + 10, w.y , this.width, this.height, 100, font);
+        }
     }
 
+    /** ++ Animation Stuff **/
+
+    @Override
+    public void tick() {
+        if(mouseMovedCooldown > 0){
+            mouseMovedCooldown --;
+            if(offset > 0){
+                offset -= 4;
+                for(Widget w : bottomButtons)
+                    w.y -= 4;
+                for(Widget w : rightButtons)
+                    w.x -= 4;
+            }
+        }else if(mouseMovedCooldown == 0 && offset < targetOffset){
+            offset += 2;
+            for(Widget w : bottomButtons)
+                w.y += 2;
+            for(Widget w : rightButtons)
+                w.x += 2;
+        }
+    }
+
+    /** -- Animation Stuff **/
 
     @Override
     public boolean mouseDragged(double mouseX, double mouseY, int mouseButton, double deltaX, double deltaY) {
