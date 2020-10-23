@@ -1,7 +1,0 @@
-{
-	"StyleName": "Daylight",
-	"Width": 64,
-	"Height": 64,
-	"Mask": "travellers_map:textures/styles/minimap/daylight_mask.png",
-	"Overlay": "travellers_map:textures/styles/minimap/daylight_overlay.png"
-}

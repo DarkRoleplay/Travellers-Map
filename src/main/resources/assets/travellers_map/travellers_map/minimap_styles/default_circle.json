@@ -1,7 +1,0 @@
-{
-	"StyleName": "Default Circle",
-	"Width": 64,
-	"Height": 64,
-	"Overlay": "travellers_map:textures/styles/minimap/default_circle.png",
-	"Mask": "travellers_map:textures/styles/minimap/default_circle_mask.png"
-}

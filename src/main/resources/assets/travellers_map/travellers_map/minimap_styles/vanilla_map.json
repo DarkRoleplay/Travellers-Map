@@ -1,7 +1,0 @@
-{
-	"StyleName": "Minecraft Map",
-	"Width": 64,
-	"Height": 64,
-	"Overlay": "minecraft:textures/map/map_background.png",
-	"Mask": "travellers_map:textures/styles/minimap/minecraft_map_mask.png"
-}
