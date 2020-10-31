@@ -1,0 +1,17 @@
+{
+  "key.categories.travellers_map": "Travellers Map",
+
+  "key.travellers_map.map.open": "Abrir Mapa",
+  "key.travellers_map.zoom": "Zoom del minimapa (presiona y usa la rueda del mouse)",
+  "key.travellers_map.zoom.in": "Acercar el minimapa",
+  "key.travellers_map.zoom.out": "Alejar el minimapa",
+  "key.travellers_map.minimap.toggle": "Alternar la visibilidad del minimapa",
+  "key.travellers_map.compass.toggle": "Alternar la visibilidad de la brújula",
+
+  "screen.travellers_map.minimap_settings": "Configuración del minimapa",
+  "screen.travellers_map.full_map": "Mapa de pantalla completa",
+  "screen.travellers_map.waypoint_creation": "Configuración de waypoint",
+
+  "hud.travellers_map.minimap": "Minimapa",
+  "hud.travellers_map.minimap.mover": "Movedor del minimapa"
+}
