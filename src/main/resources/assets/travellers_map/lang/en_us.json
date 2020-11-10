@@ -1,0 +1,5 @@
+{
+	"screen.travellers_map.waypoint_creation": "Waypoint Creation Screen",
+	"screen.travellers_map.waypoint_overview": "Waypoint Overview Screen",
+	"screen.travellers_map.waypoint_display.distance": "%s blocks away"
+}

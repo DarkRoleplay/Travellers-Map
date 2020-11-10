@@ -15,5 +15,4 @@ public class TravellersMap {
 	public TravellersMap() {
 		DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> TravellersMapClient::modConstructorInit);
 	}
-
 }
