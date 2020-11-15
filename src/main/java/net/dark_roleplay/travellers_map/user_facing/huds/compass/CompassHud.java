@@ -35,6 +35,10 @@ public class CompassHud extends Hud {
 	@Override
 	public void render(MatrixStack matrix, int mouseX, int mouseY, float delta) {
 		HudStyle style = this.getStyleProvider().getActiveStyle();
+
+		RenderSystem.pushMatrix();
+		RenderSystem.scaled(ClientConfig.COMPASS.SCALE.get(), ClientConfig.COMPASS.SCALE.get(), 1);
+
 		RenderSystem.enableBlend();
 		RenderSystem.defaultBlendFunc();
 		RenderSystem.disableAlphaTest();
@@ -66,6 +70,8 @@ public class CompassHud extends Hud {
 		for (Waypoint waypoint : MapManager.WAYPOINTS)
 			if (waypoint.isVisible() && waypoint.getLastRenderedYaw() - 3 < playerYaw && waypoint.getLastRenderedYaw() + 3 > playerYaw)
 				drawWaypointName(matrix, renderer, waypoint);
+
+		RenderSystem.popMatrix();
 	}
 
 	private float playerYaw;

@@ -1,25 +1,14 @@
-v0.6.4
+v0.7.1
 * Bug Fix/Change, + Addition, - Removal
 
-v0.6.4
-* Fixed Waypoints in Waypoint List not being editable/removeable
-* Fixed Waypoints in Waypoint List getting centered if there were to little to scroll
++ Added new Spooky themed style (not finished yet)
+* Fixed bug breaking all Keybinds using 2
 
-v0.6.3
-* Fixed a minor bug that caused the map writer to crash, slowing down map generation massively and also no longer saving explored maps
+v0.7
++ Added new Block Color Mapper (It takes biome colors into consideration) enabled by default
++ Added experimental "charged keybind" hold the Map key for a few seconds to open the minimap settings menu
++ Added new overlay map (can be opened by holding 'N')
 
-v0.6.2
-+ Added Translations: Brazilian Portuguese (Thanks @Mikeliro) & German
-+ Added keybind to toggle Minimap
-+ Added keybind to toggle Compass
-* Fixed maps not getting unloaded properly when leaving a world (It is recommended to way ~5 seconds after leaving a world so all the maps are properly saved)
-
-v0.6.1
-* Implemented Cave Mapper
-+ Nether now uses Cave Mapper with a default height of 96, in the future it'll chose your height
-
-v0.6
-* Fixed a Memory Leak, which prevented maps from being unloaded properly
-* Chaned the default name for map files to "segment_x_z" (prior m_x_Z)
-* Fixed bug causverride each othering maps to not unload if the dimension is changed
-                                                                    * Fixed bug where maps from different dimensions o
+* Fixed minimap spinning config option being ignored
+* Fixed compass scale config option not working
+* Fixed selected map style resetting on restarts

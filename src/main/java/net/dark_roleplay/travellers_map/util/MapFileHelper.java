@@ -60,7 +60,7 @@ public class MapFileHelper {
 	}
 
 	public static File getDimFolder(RegistryKey<World> dimension){
-		return new File(ACTIVE_FOLDER, dimension.getRegistryName().getNamespace() + "_" + dimension.getRegistryName().getPath());
+		return new File(ACTIVE_FOLDER, dimension.getLocation().getNamespace() + "_" + dimension.getLocation().getPath());
 	}
 
 	public static File getWaypointFolder(){

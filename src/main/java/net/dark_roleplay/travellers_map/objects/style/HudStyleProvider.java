@@ -34,6 +34,8 @@ public class HudStyleProvider {
 		this.styles.put(fallbackStyle.getStyleName(), fallbackStyle);
 		for(HudStyle style : styles)
 			this.styles.put(style.getStyleName(), style);
+
+		this.activeStyle = this.styles.get(this.config.STYLE.get());
 	}
 
 	public Collection<HudStyle> getStyles(){

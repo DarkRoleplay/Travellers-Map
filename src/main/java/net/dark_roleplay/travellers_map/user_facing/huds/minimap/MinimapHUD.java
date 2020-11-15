@@ -73,7 +73,7 @@ public class MinimapHUD extends Hud {
 
 		BlockPos playerPos = Minecraft.getInstance().player.getPosition();
 		mapRenderInfo.update(style.getWidth(), style.getHeight(), zoomLevels[currentZoomLevel], playerPos);
-		MapRenderer.renderMap(matrix, mapRenderInfo, MapType.MINIMAP, true, delta);
+		MapRenderer.renderMap(matrix, mapRenderInfo, MapType.MINIMAP, ClientConfig.SPIN_MINIMAP.get(), delta);
 
 
 		RenderSystem.translatef(style.getWidth() / 2, style.getHeight() / 2, 0);

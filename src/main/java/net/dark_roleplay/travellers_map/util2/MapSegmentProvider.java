@@ -1,7 +1,9 @@
 package net.dark_roleplay.travellers_map.util2;
 
+import net.dark_roleplay.travellers_map.configs.ClientConfig;
 import net.dark_roleplay.travellers_map.mapping.Mapper;
 import net.dark_roleplay.travellers_map.objects.mappers.CaveColorMapper;
+import net.dark_roleplay.travellers_map.objects.mappers.LightingBlockColorMapper;
 import net.dark_roleplay.travellers_map.objects.mappers.LightingColorMapper;
 import net.dark_roleplay.travellers_map.util.MapFileHelper;
 import net.dark_roleplay.travellers_map.util.MapSegment;
@@ -81,7 +83,7 @@ public class MapSegmentProvider {
         if(this.dimension == World.THE_NETHER){
             return CaveColorMapper.INSTANCE;
         }else{
-            return LightingColorMapper.INSTANCE;
+            return ClientConfig.USE_BIOME_COLORS.get() ? LightingBlockColorMapper.INSTANCE : LightingColorMapper.INSTANCE;
         }
     }
 }

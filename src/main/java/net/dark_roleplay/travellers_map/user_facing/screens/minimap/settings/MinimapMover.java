@@ -83,7 +83,7 @@ public class MinimapMover extends Widget {
 	public void onClose() {MainWindow window = Minecraft.getInstance().getMainWindow();
 		int windowWidth = window.getScaledWidth();
 		int windowHeight = window.getScaledHeight();
-		GuiAlignment alignment = ClientConfig.MINIMAP.ALIGNMENT.get();
+		GuiAlignment alignment;
 
 		if(posX < windowWidth/3)
 			alignment = posY < windowHeight/3 ?

@@ -17,9 +17,15 @@ public class ClientConfig {
 	public static HudConfig COMPASS;
 
 	public static ForgeConfigSpec.BooleanValue SPIN_MINIMAP;
+	public static ForgeConfigSpec.BooleanValue USE_BIOME_COLORS;
 
 	static{
 		ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+
+		builder.comment("Mapper Settings").push("mapper");
+		USE_BIOME_COLORS = builder.comment("Enables the usage of Biome Colors on the mapper").worldRestart()
+				.define("BiomeColors", true);
+		builder.pop();
 
 		builder.comment("Settings for the Minimap").push("minimap");
 		MINIMAP = new HudConfig(builder, "Minimap", -65, 1, GuiAlignment.TOP_RIGHT);
@@ -27,7 +33,7 @@ public class ClientConfig {
 				.define("Spin", false);
 		builder.pop();
 
-		builder.comment("Settings for the Compass (Unused right now)").push("compass");
+		builder.comment("Settings for the Compass (Unimplemented right now)").push("compass");
 		COMPASS = new HudConfig(builder, "Compass", -128, 1, GuiAlignment.TOP);
 		builder.pop();
 
