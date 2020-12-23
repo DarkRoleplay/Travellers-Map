@@ -3,26 +3,46 @@ package net.dark_roleplay.travellers_map.backend.waypoints;
 import net.dark_roleplay.travellers_map.backend.waypoints.categories.Category;
 import net.dark_roleplay.travellers_map.backend.waypoints.icons.Icon;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
 
-import java.util.List;
+import java.util.Set;
+import java.util.UUID;
 
 public class Waypoint {
 
+	private UUID identifier;
 	private String name;
 	private Icon icon;
 	private Category category;
 	private BlockPos pos;
 	private int color;
-
-	private List<Waypoint> children;
+	private Set<Waypoint> children;
 	private Waypoint parent;
 
-	public Waypoint(String name, Icon icon, int color, Category category, BlockPos pos) {
-		this.name = name;
+	private ITextComponent displayComponent;
+
+	public Waypoint(String displayName, Icon icon, int color, Category category, BlockPos pos) {
+		this.name = displayName;
 		this.icon = icon;
 		this.color = color;
 		this.category = category;
 		this.pos = pos;
+	}
+
+	public void setIdentifier(UUID id){
+		this.identifier = id;
+	}
+
+	public UUID getIdentifier() {
+		return identifier;
+	}
+
+	public ITextComponent getDisplayComponent() {
+		return displayComponent;
+	}
+
+	public void setDisplayComponent(ITextComponent displayComponent) {
+		this.displayComponent = displayComponent;
 	}
 
 	public String getName() {
