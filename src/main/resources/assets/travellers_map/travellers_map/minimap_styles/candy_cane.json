@@ -1,0 +1,7 @@
+{
+	"StyleName": "Candy Cane",
+	"Width": 64,
+	"Height": 64,
+	"Overlay": "travellers_map:textures/styles/minimap/candy_cane_overlay.png",
+	"Mask": "travellers_map:textures/styles/minimap/candy_cane_mask.png"
+}
