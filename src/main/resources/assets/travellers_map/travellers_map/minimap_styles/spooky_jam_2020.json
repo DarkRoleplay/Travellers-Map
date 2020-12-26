@@ -1,7 +1,0 @@
-{
-	"StyleName": "Spooky Jam 2020",
-	"Width": 64,
-	"Height": 96,
-	"Overlay": "travellers_map:textures/styles/minimap/spooky_jam_2020.png",
-	"Mask": "travellers_map:textures/styles/minimap/spooky_jam_2020_mask.png"
-}
