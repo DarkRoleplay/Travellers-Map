@@ -16,11 +16,17 @@ public class ClientConfig {
 	public static HudConfig MINIMAP;
 	public static HudConfig COMPASS;
 
+	public static ForgeConfigSpec.BooleanValue ENABLE_DEATH_WAYPOINTS;
 	public static ForgeConfigSpec.BooleanValue SPIN_MINIMAP;
 	public static ForgeConfigSpec.BooleanValue USE_BIOME_COLORS;
 
 	static{
 		ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
+
+		builder.comment("Waypoint Settings").push("mapper");
+		ENABLE_DEATH_WAYPOINTS = builder.comment("Enables the creation of Death Waypoints").worldRestart()
+				.define("DeathWaypoints", true);
+		builder.pop();
 
 		builder.comment("Mapper Settings").push("mapper");
 		USE_BIOME_COLORS = builder.comment("Enables the usage of Biome Colors on the mapper").worldRestart()

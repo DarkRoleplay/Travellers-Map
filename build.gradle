@@ -191,3 +191,20 @@ idea {
         }
     }
 }
+
+import net.minecraftforge.gradle.common.task.SignJar
+
+task signJar(type: SignJar, dependsOn: jar) {
+    onlyIf { // Skip the task if our secret data isn't available
+        project.hasProperty('keyStore')
+    }
+
+    keyStore = project.keyStore
+    alias = project.keyStoreAlias
+    storePass = project.keyStorePass
+    keyPass = project.keyStoreKeyPass
+    inputFile = jar.archivePath
+    outputFile = jar.archivePath
+}
+
+build.dependsOn signJar

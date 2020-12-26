@@ -1,6 +1,19 @@
-v0.7.1
+v0.7.4
 * Bug Fix/Change, + Addition, - Removal
 
+* Fixed Death waypoints being invisible on the compass
+
+v0.7.3
++ Added Config to disable Death Waypoints
+
+v0.7.2
+- Removed styles for other mods
+- Removed hallowed style
++ Added Candy Cane style
++ Added Death Waypoints (doesn't work with gamerule doImmediateRespawn)
+* Fixed waypoint deletion gui not closing if waypoint gets deleted before it's saved.
+
+v0.7.1
 + Added new Spooky themed style (not finished yet)
 * Fixed bug breaking all Keybinds using 2
 
