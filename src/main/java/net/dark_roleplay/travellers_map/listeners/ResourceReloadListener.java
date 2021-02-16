@@ -61,7 +61,7 @@ public class ResourceReloadListener {
 		public CompletableFuture<Void> reload(IFutureReloadListener.IStage stage, IResourceManager resourceManager, IProfiler preparationsProfiler, IProfiler reloadProfiler, Executor backgroundExecutor, Executor gameExecutor){
 			return CompletableFuture.<Void>supplyAsync(() -> {
 				Set<HudStyle> styles = new HashSet<>();
-				Collection<ResourceLocation> minimapStyles = resourceManager.getAllResourceLocations(this.folder, val -> true);
+				Collection<ResourceLocation> minimapStyles = resourceManager.getAllResourceLocations(this.folder, val -> val.endsWith(".json"));
 
 				for(ResourceLocation styleLoc : minimapStyles){
 					try {
